@@ -10,7 +10,7 @@ export default function ComingSoon() {
         <p className="text-2xl">JamSpace is currently in development phase</p>
         <div className="text-gray-400">
           <p>
-            This site will update automatically when there's a new feature
+            This site will update automatically when there&#39;s a new feature
             release so hold tight.
           </p>
           <p> JamSpace will be live soon!</p>
