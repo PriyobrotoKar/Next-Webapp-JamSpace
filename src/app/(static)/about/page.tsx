@@ -1,18 +1,60 @@
+"use client";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import React from "react";
-
+import React, { useLayoutEffect, useRef } from "react";
+gsap.registerPlugin(ScrollTrigger);
 const About = () => {
+  const bannerRef = useRef(null);
+  const mainRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const tl = gsap.timeline();
+    tl.from(bannerRef.current, {
+      autoAlpha: 0,
+      scale: 1.1,
+      duration: 2,
+    }).from(mainRef.current, {
+      y: "10%",
+      autoAlpha: 0,
+      delay: -1,
+      duration: 1.5,
+    });
+
+    gsap.fromTo(
+      bannerRef.current,
+      {
+        opacity: 1,
+        scale: 1,
+      },
+      {
+        opacity: 0,
+        scale: 0.99,
+
+        scrollTrigger: {
+          trigger: bannerRef.current,
+          start: "10% top",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
   return (
-    <div>
+    <div className="">
       <div className="min-h-[20rem] h-[40vh] w-full overflow-hidden  sticky -translate-y-24 top-24 -z-10 before:bg-gradient-to-b before:to-black before:h-full before:block before:z-10 before:from-transparent before:absolute before:inset-0">
         <Image
+          ref={bannerRef}
           alt="about banner"
           className="object-cover object-[50%_50%] h-full"
           fill
           src={"/aboutbanner.png"}
         />
       </div>
-      <main className="px-6 max-w-screen-lg mx-auto -translate-y-10 space-y-4">
+      <main
+        ref={mainRef}
+        className="px-6 max-w-screen-lg mx-auto -translate-y-10 space-y-4"
+      >
         <div>
           <h1 className="text-5xl font-semibold py-10">About JamSpace</h1>
           <p className="leading-relaxed text-neutral-300">
@@ -34,7 +76,7 @@ const About = () => {
         </div>
         <div>
           <h2 className="text-4xl font-medium py-6">Features Implemented</h2>
-          <ul className="list-disc  text-neutral-300">
+          <ul className="list-disc  text-neutral-300 list-outside pl-5">
             <li>
               Vast Music Library: Access a vast collection of songs, albums, and
               playlists across various genres and artists.
@@ -79,6 +121,32 @@ const About = () => {
               unforgettable journey.
             </li>
           </ul>
+        </div>
+        <div>
+          <h2 className="text-4xl font-medium py-6">Tech Stack</h2>
+          <div className="flex justify-between">
+            <div>
+              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            </div>
+            <div>
+              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            </div>
+            <div>
+              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            </div>
+            <div>
+              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            </div>
+            <div>
+              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            </div>
+            <div>
+              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            </div>
+            <div>
+              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            </div>
+          </div>
         </div>
       </main>
     </div>
