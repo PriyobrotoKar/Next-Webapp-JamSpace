@@ -7,7 +7,7 @@ export default function ComingSoonLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="min-h-screen flex flex-col ">
+    <section className="min-h-[100svh] flex flex-col ">
       {/* Include shared UI here e.g. a header or sidebar */}
       <Navbar />
       {children}
