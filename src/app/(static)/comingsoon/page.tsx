@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./style.css";
 import { BsArrowRight } from "react-icons/bs";
 export default function ComingSoon() {
@@ -15,9 +16,14 @@ export default function ComingSoon() {
           </p>
           <p> JamSpace will be live soon!</p>
         </div>
-        <button className="bg-white font-medium px-6 py-3 text-black rounded-full text-xl hover:bg-orange-500 transition-colors flex gap-2 items-center mx-auto group">
-          <span>Learn More</span>
-          <BsArrowRight className="group-hover:translate-x-1 transition-transform" />
+        <button className=" mx-auto bg-white font-medium text-black rounded-full text-xl hover:bg-orange-500 transition-colors ">
+          <Link
+            className="flex  px-6 py-3 gap-2 items-center group"
+            href={"/about"}
+          >
+            <span>Learn More</span>
+            <BsArrowRight className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </button>
       </div>
     </section>
