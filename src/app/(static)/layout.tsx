@@ -1,5 +1,14 @@
-import Footer from "./comingsoon/components/Footer";
-import Navbar from "./comingsoon/components/Navbar";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    template: `%s | JamSpace`,
+    default: "JamSpace", // a default is required when creating a template
+  },
+};
 
 export default function ComingSoonLayout({
   children, // will be a page or nested layout

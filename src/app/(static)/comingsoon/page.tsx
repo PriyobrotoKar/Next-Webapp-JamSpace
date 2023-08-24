@@ -1,6 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import "./style.css";
 import { BsArrowRight } from "react-icons/bs";
+
+export const metadata: Metadata = {
+  title: "Coming Soon",
+};
 export default function ComingSoon() {
   return (
     <section className=" text-center space-y-6 flex flex-col justify-center flex-1 pb-8">
