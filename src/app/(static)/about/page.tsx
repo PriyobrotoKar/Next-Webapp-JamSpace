@@ -8,7 +8,18 @@ const About = () => {
   const bannerRef = useRef(null);
   const mainRef = useRef(null);
 
+  const stopScrolling = () => {
+    document.body.classList.add("h-full");
+    document.body.classList.add("overflow-hidden");
+    setTimeout(() => {
+      document.body.classList.remove("h-full");
+      document.body.classList.remove("overflow-hidden");
+    }, 2000);
+  };
+
   useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    stopScrolling();
     const tl = gsap.timeline();
     tl.fromTo(
       bannerRef.current,
@@ -66,7 +77,7 @@ const About = () => {
       </div>
       <main
         ref={mainRef}
-        className="px-6 max-w-screen-lg mx-auto  space-y-4 opacity-0"
+        className="px-6 mx-auto  space-y-4 opacity-0 container xl:max-w-screen-lg"
       >
         <div>
           <h1 className="text-5xl font-semibold py-6 md:py-10">
@@ -78,11 +89,11 @@ const About = () => {
             songs, albums, and playlists. Enjoy personalized recommendations,
             secure authentication, and effortless playlist creation. Immerse
             yourself in the magic of music with JamSpace today. Featuring a
-            sleek and intuitive user interface, HarmoniFi allows you to
+            sleek and intuitive user interface. The SpotifyAPI allows you to
             effortlessly explore a vast library of songs, albums, and playlists
-            from various genres and artists. With the integration of Spotify
-            API, you can access your favorite tracks and personalized
-            recommendations, ensuring that you never miss a beat.
+            from various genres and artists as well as you can access your
+            favorite tracks and personalized recommendations, ensuring that you
+            never miss a beat.
           </p>
         </div>
         <div>
@@ -139,27 +150,90 @@ const About = () => {
         </div>
         <div>
           <h2 className="text-4xl font-medium py-6">Tech Stack</h2>
-          <div className="flex justify-between">
-            <div>
-              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+          <div className=" flex gap-6 flex-wrap justify-center md:justify-start [&>*]:flex-1 items-center max-w-3xl">
+            <div className="group flex flex-col items-center gap-1">
+              <Image
+                className="cursor-pointer"
+                src={"/logos/react.svg"}
+                alt=""
+                width={40}
+                height={40}
+              />
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                React
+              </div>
             </div>
-            <div>
-              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            <div className="group flex flex-col items-center gap-1">
+              <Image
+                className="cursor-pointer"
+                src={"/logos/nextjs.svg"}
+                alt=""
+                width={40}
+                height={40}
+              />
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Next JS
+              </div>
             </div>
-            <div>
-              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            <div className="group flex flex-col items-center gap-1">
+              <Image
+                className="cursor-pointer"
+                src={"/logos/redux.svg"}
+                alt=""
+                width={40}
+                height={40}
+              />
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Redux
+              </div>
             </div>
-            <div>
-              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            <div className="group flex flex-col items-center gap-1">
+              <Image
+                className="cursor-pointer"
+                src={"/logos/tailwind-css.svg"}
+                alt=""
+                width={40}
+                height={40}
+              />
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Tailwind
+              </div>
             </div>
-            <div>
-              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            <div className="group flex flex-col items-center gap-1">
+              <Image
+                className="cursor-pointer"
+                src={"/logos/spotify.svg"}
+                alt=""
+                width={40}
+                height={40}
+              />
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Spotify API
+              </div>
             </div>
-            <div>
-              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            <div className="group flex flex-col items-center gap-1">
+              <Image
+                className="cursor-pointer"
+                src={"/logos/nextauth.png"}
+                alt=""
+                width={40}
+                height={40}
+              />
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                NextAuth
+              </div>
             </div>
-            <div>
-              <Image src={"/logos/react.svg"} alt="" width={40} height={40} />
+            <div className="group flex flex-col items-center gap-1">
+              <Image
+                className="cursor-pointer"
+                src={"/logos/git.svg"}
+                alt=""
+                width={40}
+                height={40}
+              />
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Git
+              </div>
             </div>
           </div>
         </div>
