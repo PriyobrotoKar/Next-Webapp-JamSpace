@@ -1,5 +1,5 @@
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Footer from "./comingsoon/components/Footer";
+import Navbar from "./comingsoon/components/Navbar";
 
 export default function ComingSoonLayout({
   children, // will be a page or nested layout
@@ -7,7 +7,7 @@ export default function ComingSoonLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="min-h-screen flex flex-col">
+    <section className="min-h-[100svh] flex flex-col ">
       {/* Include shared UI here e.g. a header or sidebar */}
       <Navbar />
       {children}

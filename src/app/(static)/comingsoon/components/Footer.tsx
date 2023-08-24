@@ -3,14 +3,14 @@ import { FiGithub } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between  px-6 pt-10 pb-8 text-gray-400">
+    <footer className="flex justify-between  px-4 pt-10 pb-4 md:px-6 md:py-8 text-gray-400">
       <a href="https://github.com/PriyobrotoKar/Next-Webapp-JamSpace">
         <div className="flex items-center gap-2 hover:text-white transition-colors">
           <FiGithub />
-          <div>Github Repository</div>
+          <div className="hidden md:block">Github Repository</div>
         </div>
       </a>
-      <div>
+      <div className="text-sm md:text-base text-right">
         <a
           className="hover:text-white transition-colors"
           href="https://twitter.com/priyobrotokar"
