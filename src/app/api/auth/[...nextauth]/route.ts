@@ -42,7 +42,7 @@ const refreshAccessToken = async (token: any) => {
   };
 };
 
-export const authOptions = {
+const authOptions = {
   providers: [
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID!,
