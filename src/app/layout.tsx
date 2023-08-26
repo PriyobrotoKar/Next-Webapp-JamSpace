@@ -1,3 +1,4 @@
+import NextAuthProvider from "@/Providers/NextAuthProvider";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-Poppins">{children}</body>
+      <NextAuthProvider>
+        <body className="font-Poppins min-h-[100svh]">{children}</body>
+      </NextAuthProvider>
     </html>
   );
 }
