@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import LoginButton from "../../components/LoginButton";
+import LoginButton from "../../../components/LoginButton";
 
 const page = () => {
   return (
