@@ -1,7 +1,7 @@
 import NextAuthProvider from "@/Providers/NextAuthProvider";
-import "./globals.css";
+import "../globals.css";
 import type { Metadata } from "next";
-import { Toaster } from "react-hot-toast";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,13 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <NextAuthProvider>
-        <body className="font-Poppins min-h-[100svh]">
-          <Toaster position="top-center" />
-          {children}
-        </body>
-      </NextAuthProvider>
-    </html>
+    <NextAuthProvider>
+      <section className="font-Poppins min-h-[100svh]">
+        <Navbar />
+        {children}
+      </section>
+    </NextAuthProvider>
   );
 }
