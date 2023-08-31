@@ -2,15 +2,23 @@ import { NextAuthOptions } from "next-auth";
 import axios from "axios";
 import SpotifyProvider from "next-auth/providers/spotify";
 
-const scopes = ["user-read-playback-state"].join(",");
+const scopes = [
+  "user-read-email",
+  "playlist-read-private",
+  "playlist-read-collaborative",
+  "user-read-currently-playing",
+  "user-modify-playback-state",
+  "user-follow-read",
+  "user-library-read",
+].join(",");
 
-const params = {
-  scopes,
-};
+// const params = {
+//   scopes,
+// };
 
-const LOGIN_URL =
-  "https://accounts.spotify.com/authorize?" +
-  new URLSearchParams(params).toString();
+// const LOGIN_URL =
+//   "https://accounts.spotify.com/authorize?" +
+//   new URLSearchParams(params).toString();
 
 const refreshAccessToken = async (token: any) => {
   // const params = new URLSearchParams({
@@ -47,7 +55,10 @@ export const authOptions: NextAuthOptions = {
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID!,
       clientSecret: process.env.SPOTIFY_SECRET!,
-      authorization: LOGIN_URL,
+      authorization: {
+        url: "https://accounts.spotify.com/authorize",
+        params: { scope: scopes },
+      },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
@@ -57,6 +68,7 @@ export const authOptions: NextAuthOptions = {
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
+        token.scope = account.scope;
         token.expiresIn = account.expires_at;
         return token;
       }
@@ -67,6 +79,7 @@ export const authOptions: NextAuthOptions = {
       return refreshAccessToken(token);
     },
     async session({ session, token }: any) {
+      session.scope = token.scope;
       session.accessToken = token.accessToken;
       return session;
     },

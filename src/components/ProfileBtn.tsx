@@ -1,5 +1,5 @@
 "use client";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   DropdownMenu,
@@ -13,6 +13,7 @@ import { twJoin } from "tailwind-merge";
 
 const ProfileBtn = () => {
   const { data } = useSession();
+  console.log(data);
   return (
     <div
       className={twJoin(
@@ -39,7 +40,10 @@ const ProfileBtn = () => {
           <DropdownMenuItem className="rounded-[10px]">
             Profile
           </DropdownMenuItem>
-          <DropdownMenuItem className="rounded-[10px]">
+          <DropdownMenuItem
+            onClick={() => signOut()}
+            className="rounded-[10px]"
+          >
             Log out
           </DropdownMenuItem>
         </DropdownMenuContent>
