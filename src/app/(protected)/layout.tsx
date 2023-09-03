@@ -18,9 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <NextAuthProvider>
-      <section className="font-Poppins min-h-[100svh]">
+      <section className="font-Poppins min-h-[100svh] bg-gradient-to-b from-orange-900/25 to-40%">
         <Navbar />
-        <main className="flex gap-0 lg:gap-6 justify-between">
+        <main className="flex gap-0 lg:gap-6 justify-between h-[90svh]">
           <SidebarLeft />
           {children}
           <SidebarRight />

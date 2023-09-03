@@ -18,7 +18,7 @@ const Navbar = () => {
         <Input
           type="text"
           placeholder="Want do you want to listen to?"
-          className="border-none focus-visible:ring-offset-0 focus-visible:ring-0"
+          className="border-none bg-transparent focus-visible:ring-offset-0 focus-visible:ring-0"
         />
       </div>
       <ProfileBtn />

@@ -3,13 +3,19 @@ import React, { useEffect, useState } from "react";
 
 const BASE_URL = "https://api.spotify.com/v1/";
 
-const fetchDataFromApi = async (
+export const fetchDataFromApi = async (
   url: string,
   token: string,
   params?: { [key: string]: string | number }
 ) => {
+  if (!url) {
+    return;
+  }
   const response = await axios.get(BASE_URL + url, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Accept-Language": "en",
+    },
     params,
   });
   return response.data;

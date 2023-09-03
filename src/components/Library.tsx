@@ -8,14 +8,8 @@ import React, { useEffect, useState } from "react";
 const Library = () => {
   const { data: session } = useSession();
   const [playlists, setPlaylists] = useState<any>([]);
-  const { data: playlist }: { data: any } = useFetch(
-    "me/playlists",
-    session?.accessToken
-  );
-  const { data: albums, loading }: { data: any; loading: boolean } = useFetch(
-    "me/albums",
-    session?.accessToken
-  );
+  const { data: playlist } = useFetch("me/playlists", session?.accessToken);
+  const { data: albums, loading } = useFetch("me/albums", session?.accessToken);
 
   useEffect(() => {
     if (playlist && albums) {
@@ -41,17 +35,17 @@ const Library = () => {
     }
   }, [playlist, albums]);
   return (
-    <div>
+    <div className=" min-h-0 overflow-y-auto invisible hover:visible  ">
       {loading ? (
         "Loading..."
       ) : (
-        <div className="mt-3 space-y-1">
+        <div className="mt-3 space-y-1 visible">
           {playlists?.map((item: any) => {
             return (
               <Link
                 key={item.id}
                 href={`/${item.type}/${item.id}`}
-                className="flex gap-3 p-2 xl:pr-4 hover:bg-neutral-900 md:rounded-[8px] xl:rounded-xl transition-colors"
+                className="flex gap-3 p-2 xl:pr-4 hover:bg-orange-950/30 md:rounded-[8px] xl:rounded-xl transition-colors"
               >
                 <div className="min-w-full xl:min-w-max  md:rounded-[6px] xl:rounded-xl overflow-hidden">
                   <Image

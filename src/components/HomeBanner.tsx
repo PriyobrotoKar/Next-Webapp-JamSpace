@@ -19,7 +19,7 @@ const HomeBanner = () => {
     }
   }, [data]);
   return (
-    <div className="flex gap-10 justify-between bg-gradient-to-bl from-[#272727] to-neutral-950 p-6 2xl:p-8 rounded-3xl  w-full">
+    <div className="flex gap-10 justify-between bg-gradient-to-bl from-orange-950/40 to-neutral-900 p-6 2xl:p-8 rounded-3xl  w-full">
       {loading ? (
         "Loading..."
       ) : (
@@ -30,7 +30,7 @@ const HomeBanner = () => {
               <h2 className="text-4xl xl:text-5xl 2xl:text-6xl font-medium">
                 {featPlaylist?.name}
               </h2>
-              <p className="text-neutral-500  xl:text-xl">
+              <p className="xl:text-xl text-neutral-500 ">
                 {featPlaylist?.description}
               </p>
             </div>
