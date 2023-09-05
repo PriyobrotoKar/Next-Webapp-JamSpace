@@ -17,7 +17,7 @@ const RecentlyPlayed = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="flex gap-10">
+        <div className="flex md:gap-4 xl:gap-10">
           <div className="flex-1 space-y-4">
             <div>
               <Image
@@ -37,7 +37,7 @@ const RecentlyPlayed = () => {
               </p>
             </div>
           </div>
-          <div className="flex-[3_3_0%] space-y-2">
+          <div className="md:flex-[2_2_0%] xl:flex-[3_3_0%] space-y-2">
             {data?.items.map((item: any, i: number) => {
               if (i === 0) return;
               return (
@@ -45,7 +45,7 @@ const RecentlyPlayed = () => {
                   <div className="flex gap-4">
                     <div>
                       <Image
-                        className="rounded-[8px]"
+                        className="rounded-[8px] min-w-[3rem]"
                         src={item.track.album.images[2].url}
                         alt=""
                         width={50}
@@ -53,7 +53,7 @@ const RecentlyPlayed = () => {
                       />
                     </div>
                     <div className="space-y-1">
-                      <h2>{item.track.name}</h2>
+                      <h2 className="line-clamp-1">{item.track.name}</h2>
                       <p className="line-clamp-1 text-xs text-neutral-400">
                         {item.track.artists.map((artist: any) => {
                           return <span className="">{`${artist.name}, `}</span>;

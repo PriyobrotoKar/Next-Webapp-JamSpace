@@ -9,7 +9,8 @@ export const fetchDataFromApi = async (
   params?: { [key: string]: string | number }
 ) => {
   if (!url) {
-    return;
+    const response = new Promise((resolve) => resolve(null));
+    return response;
   }
   const response = await axios.get(BASE_URL + url, {
     headers: {

@@ -4,7 +4,7 @@ import SideQueue from "./SideQueue";
 
 const SidebarRight = () => {
   return (
-    <div className="px-6 pt-6 hidden lg:block lg:w-[16rem] 2xl:flex-1 space-y-8">
+    <div className="px-6 pt-6 hidden lg:block lg:w-[32rem] 2xl:flex-1 space-y-8">
       <AboutArtist />
       <SideQueue />
     </div>

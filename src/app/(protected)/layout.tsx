@@ -20,7 +20,7 @@ export default function RootLayout({
     <NextAuthProvider>
       <section className="font-Poppins min-h-[100svh] bg-gradient-to-b from-orange-900/25 to-40%">
         <Navbar />
-        <main className="flex gap-0 lg:gap-6 justify-between h-[90svh]">
+        <main className="mx-auto max-w-[2000px] flex gap-0 lg:gap-6 justify-between h-[calc(100svh-5.6rem)]">
           <SidebarLeft />
           {children}
           <SidebarRight />

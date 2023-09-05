@@ -13,7 +13,6 @@ import { twJoin } from "tailwind-merge";
 
 const ProfileBtn = () => {
   const { data } = useSession();
-  console.log(data);
   return (
     <div
       className={twJoin(

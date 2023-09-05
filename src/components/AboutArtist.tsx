@@ -1,6 +1,7 @@
 "use client";
 
 import useFetch from "@/hooks/useFetch";
+import { format } from "@/lib/utils";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
@@ -11,7 +12,7 @@ const AboutArtist = () => {
     session?.accessToken
   );
 
-  const { data: aboutArtist } = useFetch(
+  const { data: aboutArtist, loading } = useFetch(
     currentSong ? `artists/${currentSong.item.artists[0].id}` : "",
     session?.accessToken
   );
@@ -19,20 +20,20 @@ const AboutArtist = () => {
   return (
     <div>
       <h1 className="mb-4">About The Artist</h1>
-      {!aboutArtist ? (
+      {loading ? (
         <div>Loading...</div>
-      ) : (
-        <div className="bg-neutral-950 p-4 rounded-2xl space-y-3 overflow-hidden">
+      ) : aboutArtist ? (
+        <div className="bg-orange-950/30 p-4 rounded-2xl space-y-3 overflow-hidden">
           <div className="relative ">
             <Image
-              className="h-64 relative z-10 object-cover object-[50%_22%] rounded-xl"
+              className="h-64 w-full relative z-10 object-cover object-[50%_22%] rounded-xl"
               src={aboutArtist?.images[0].url}
               alt=""
               width={400}
               height={300}
             />
             <Image
-              className="h-64 absolute inset-0 blur-3xl  object-cover object-[50%_22%] rounded-xl"
+              className="h-64 w-full absolute inset-0 blur-3xl  object-cover object-[50%_22%] rounded-xl"
               src={aboutArtist?.images[0].url}
               alt=""
               width={400}
@@ -41,7 +42,9 @@ const AboutArtist = () => {
             />
           </div>
           <h2 className="font-semibold text-xl">{aboutArtist?.name}</h2>
-          <p className="text-sm text-neutral-400">{`${aboutArtist?.followers.total} monthly active listeners`}</p>
+          <p className="text-sm text-neutral-400">{`${format(
+            aboutArtist?.followers.total
+          )} monthly active listeners`}</p>
           <div className="flex gap-2 flex-wrap">
             {aboutArtist?.genres.map((genre: string, i: number) => {
               if (i === 3) return;
@@ -53,6 +56,8 @@ const AboutArtist = () => {
             })}
           </div>
         </div>
+      ) : (
+        <div>No song is currently playing</div>
       )}
     </div>
   );

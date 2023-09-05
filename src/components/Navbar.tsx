@@ -6,7 +6,7 @@ import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   return (
-    <header className="px-4 py-4 md:px-6 md:py-6 flex justify-between items-center">
+    <header className="mx-auto max-w-[2000px] px-4 py-4 md:px-6 md:py-6 flex justify-between items-center">
       <div className="flex gap-44 items-center">
         <div className="text-xl md:text-2xl font-medium  ">
           Jam<span className="text-gray-400">Space</span>
