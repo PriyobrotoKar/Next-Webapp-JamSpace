@@ -1,12 +1,12 @@
-import HomeBanner from "@/components/HomeBanner";
 import NavLinks from "@/components/NavLinks";
-import RecentlyPlayed from "@/components/RecentlyPlayed";
+import PlaylistBanner from "@/components/PlaylistBanner";
 import { Input } from "@/components/ui/input";
+import React from "react";
 import { FiSearch } from "react-icons/fi";
 
-export default function Home() {
+const page = ({ params }: { params: { id: string } }) => {
   return (
-    <>
+    <div>
       <header className="backdrop-blur-md py-6">
         <div className="flex justify-between items-center">
           <NavLinks />
@@ -20,10 +20,9 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <section className="pr-6 lg:pr-0 space-y-8 overflow-y-auto ">
-        <HomeBanner />
-        <RecentlyPlayed />
-      </section>
-    </>
+      <PlaylistBanner params={params} />
+    </div>
   );
-}
+};
+
+export default page;

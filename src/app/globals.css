@@ -15,10 +15,10 @@
     --popover: 11 3% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 14 80% 57%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 360 0% 20%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 360 0% 20%;
@@ -66,4 +66,18 @@
   background-color: #222222;
   border-radius: 10px;
   border: 5px solid #000000;
+}
+section::-webkit-scrollbar {
+  width: 0;
+}
+@media screen and (max-width: 1280px) {
+  * {
+    scrollbar-width: 0;
+    scrollbar-color: #e96239 #000000;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 0px;
+  }
 }
