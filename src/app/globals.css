@@ -67,6 +67,9 @@
   border-radius: 10px;
   border: 5px solid #000000;
 }
+section::-webkit-scrollbar {
+  width: 0;
+}
 @media screen and (max-width: 1280px) {
   * {
     scrollbar-width: 0;

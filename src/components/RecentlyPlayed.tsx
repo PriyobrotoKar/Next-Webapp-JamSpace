@@ -4,6 +4,9 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 
+import { FaPlay } from "react-icons/fa6";
+import { LoadingRecently } from "./LoadingUI";
+
 const RecentlyPlayed = () => {
   const { data: session } = useSession();
   const { data, loading } = useFetch(
@@ -15,7 +18,7 @@ const RecentlyPlayed = () => {
     <div>
       <h1 className="mb-6 text-xl font-semibold">Recently Played</h1>
       {loading ? (
-        <div>Loading...</div>
+        <LoadingRecently />
       ) : (
         <div className="flex md:gap-4 xl:gap-10">
           <div className="flex-1 space-y-4">
@@ -41,24 +44,31 @@ const RecentlyPlayed = () => {
             {data?.items.map((item: any, i: number) => {
               if (i === 0) return;
               return (
-                <div className="flex justify-between hover:bg-orange-950/30 transition-colors p-3  rounded-[12px]">
-                  <div className="flex gap-4">
-                    <div>
-                      <Image
-                        className="rounded-[8px] min-w-[3rem]"
-                        src={item.track.album.images[2].url}
-                        alt=""
-                        width={50}
-                        height={50}
-                      />
+                <div className="flex justify-between gap-4 hover:bg-orange-950/30 transition-colors p-3 group rounded-[12px]">
+                  <div className="flex group-hover:gap-4">
+                    <div className="self-center opacity-0 w-0 group-hover:opacity-100">
+                      <FaPlay />
                     </div>
-                    <div className="space-y-1">
-                      <h2 className="line-clamp-1">{item.track.name}</h2>
-                      <p className="line-clamp-1 text-xs text-neutral-400">
-                        {item.track.artists.map((artist: any) => {
-                          return <span className="">{`${artist.name}, `}</span>;
-                        })}
-                      </p>
+                    <div className="flex gap-4 group-hover:translate-x-4 transition-all">
+                      <div>
+                        <Image
+                          className="rounded-[8px] min-w-[3rem]"
+                          src={item.track.album.images[2].url}
+                          alt=""
+                          width={50}
+                          height={50}
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <h2 className="line-clamp-1">{item.track.name}</h2>
+                        <p className="line-clamp-1 text-xs text-neutral-400">
+                          {item.track.artists.map((artist: any) => {
+                            return (
+                              <span className="">{`${artist.name}, `}</span>
+                            );
+                          })}
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div className="text-sm text-neutral-400 self-center">

@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import { LoadingHomeBanner } from "./LoadingUI";
 
 const HomeBanner = () => {
   const { data: session } = useSession();
@@ -19,9 +20,9 @@ const HomeBanner = () => {
     }
   }, [data]);
   return (
-    <div className="flex gap-10 justify-between bg-gradient-to-bl from-orange-950/40 to-neutral-900 p-6 2xl:p-8 rounded-3xl  w-full">
+    <div className="flex gap-10 justify-between bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-6 2xl:p-8 rounded-3xl  w-full">
       {loading ? (
-        "Loading..."
+        <LoadingHomeBanner />
       ) : (
         <>
           <div className="flex flex-col gap-4 xl:gap-6 justify-between flex-[2_2_0%]">
@@ -30,17 +31,17 @@ const HomeBanner = () => {
               <h2 className="text-4xl xl:text-5xl 2xl:text-6xl font-medium">
                 {featPlaylist?.name}
               </h2>
-              <p className="xl:text-xl text-neutral-500 ">
+              <p className="2xl:text-xl text-neutral-500 ">
                 {featPlaylist?.description}
               </p>
             </div>
             <div className="flex gap-4 items-center">
-              <Button className=" xl:text-2xl font-semibold p-5 xl:p-7">
+              <Button className=" xl:text-xl 2xl:text-2xl font-semibold p-5 xl:p-6 2xl:p-7">
                 PLAY
               </Button>
               <Button
                 variant={"secondary"}
-                className=" xl:text-2xl font-medium p-5 xl:p-7"
+                className=" xl:text-xl 2xl:text-2xl font-medium p-5 xl:p-6 2xl:p-7"
               >
                 FOLLOW
               </Button>

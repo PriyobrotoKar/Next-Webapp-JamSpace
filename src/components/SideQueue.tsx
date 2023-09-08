@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { LoadingLib } from "./LoadingUI";
 
 const SideQueue = () => {
   const { data: session } = useSession();
@@ -13,7 +14,7 @@ const SideQueue = () => {
     <div>
       <h1 className="mb-4">Coming Up Next</h1>
       {loading ? (
-        <div>Loading...</div>
+        <LoadingLib />
       ) : data.currently_playing ? (
         <>
           <Link

@@ -4,6 +4,8 @@ import useFetch from "@/hooks/useFetch";
 import { format } from "@/lib/utils";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { LoadingAbout } from "./LoadingUI";
+import { AboutErrorUI } from "./ErrorUI";
 
 const AboutArtist = () => {
   const { data: session } = useSession();
@@ -21,7 +23,7 @@ const AboutArtist = () => {
     <div>
       <h1 className="mb-4">About The Artist</h1>
       {loading ? (
-        <div>Loading...</div>
+        <LoadingAbout />
       ) : aboutArtist ? (
         <div className="bg-orange-950/30 p-4 rounded-2xl space-y-3 overflow-hidden">
           <div className="relative ">
@@ -57,7 +59,7 @@ const AboutArtist = () => {
           </div>
         </div>
       ) : (
-        <div>No song is currently playing</div>
+        <AboutErrorUI />
       )}
     </div>
   );
