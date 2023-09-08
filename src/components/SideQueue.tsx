@@ -37,7 +37,7 @@ const SideQueue = () => {
               <div className=" line-clamp-1">
                 {data.queue[0]?.artists.map((artist: any) => {
                   return (
-                    <span className="text-sm text-neutral-400">
+                    <span key={artist.id} className="text-sm text-neutral-400">
                       {`${artist.name}, `}
                     </span>
                   );

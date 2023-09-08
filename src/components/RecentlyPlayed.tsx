@@ -35,7 +35,12 @@ const RecentlyPlayed = () => {
               <h2 className="line-clamp-1">{data?.items[0].track.name}</h2>
               <p className="line-clamp-1 text-sm text-neutral-400">
                 {data?.items[0].track.artists.map((artist: any) => {
-                  return <span className="">{`${artist.name}, `}</span>;
+                  return (
+                    <span
+                      key={artist.id}
+                      className=""
+                    >{`${artist.name}, `}</span>
+                  );
                 })}
               </p>
             </div>
@@ -44,7 +49,10 @@ const RecentlyPlayed = () => {
             {data?.items.map((item: any, i: number) => {
               if (i === 0) return;
               return (
-                <div className="flex justify-between gap-4 hover:bg-orange-950/30 transition-colors p-3 group rounded-[12px]">
+                <div
+                  key={item.track.id}
+                  className="flex justify-between gap-4 hover:bg-orange-950/30 transition-colors p-3 group rounded-[12px]"
+                >
                   <div className="flex group-hover:gap-4">
                     <div className="self-center opacity-0 w-0 group-hover:opacity-100">
                       <FaPlay />
@@ -64,7 +72,10 @@ const RecentlyPlayed = () => {
                         <p className="line-clamp-1 text-xs text-neutral-400">
                           {item.track.artists.map((artist: any) => {
                             return (
-                              <span className="">{`${artist.name}, `}</span>
+                              <span
+                                key={artist.id}
+                                className=""
+                              >{`${artist.name}, `}</span>
                             );
                           })}
                         </p>

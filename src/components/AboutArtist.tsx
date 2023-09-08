@@ -31,6 +31,7 @@ const AboutArtist = () => {
               className="h-64 w-full relative z-10 object-cover object-[50%_22%] rounded-xl"
               src={aboutArtist?.images[0].url}
               alt=""
+              priority
               width={400}
               height={300}
             />
@@ -38,6 +39,7 @@ const AboutArtist = () => {
               className="h-64 w-full absolute inset-0 blur-3xl  object-cover object-[50%_22%] rounded-xl"
               src={aboutArtist?.images[0].url}
               alt=""
+              priority
               width={400}
               height={300}
               quality={50}
@@ -51,7 +53,10 @@ const AboutArtist = () => {
             {aboutArtist?.genres.map((genre: string, i: number) => {
               if (i === 3) return;
               return (
-                <div className="bg-neutral-800/30 text-sm  px-4 py-2 rounded-full">
+                <div
+                  key={genre}
+                  className="bg-neutral-800/30 text-sm  px-4 py-2 rounded-full"
+                >
                   {genre}
                 </div>
               );

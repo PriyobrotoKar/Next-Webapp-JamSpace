@@ -51,7 +51,8 @@ const HomeBanner = () => {
             <Image
               className="rounded-2xl h-full  w-full"
               alt=""
-              src={featPlaylist?.images[0].url}
+              src={featPlaylist?.images[0].url || "/no-image.png"}
+              priority
               width={300}
               height={300}
             />
