@@ -1,10 +1,25 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import NavLinks from "@/components/NavLinks";
-import PlaylistBanner from "@/components/PlaylistBanner";
+import AlbumPlaylistBanner from "@/components/AlbumPlaylistBanner";
 import { Input } from "@/components/ui/input";
+import fetchApi from "@/lib/fetchApi";
+import { getServerSession } from "next-auth";
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 
-const page = ({ params }: { params: { id: string } }) => {
+const page = async ({ params }: { params: { id: string } }) => {
+  const session = await getServerSession(authOptions);
+
+  const playlistInfo = await fetchApi(
+    `playlists/${params.id}`,
+    session!.accessToken
+  );
+
+  const playlistUser = await fetchApi(
+    playlistInfo ? `users/${playlistInfo.owner.id}` : "",
+    session!.accessToken
+  );
+
   return (
     <div>
       <header className="backdrop-blur-md py-6">
@@ -20,7 +35,7 @@ const page = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
       </header>
-      <PlaylistBanner params={params} />
+      <AlbumPlaylistBanner user={playlistUser} data={playlistInfo} />
     </div>
   );
 };
