@@ -74,6 +74,7 @@ export const authOptions: NextAuthOptions = {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
         token.expiresIn = account.expires_at;
+        token.providerAccountId = account.providerAccountId;
         // console.log("account", account);
         // console.log("token", token);
         return token;
@@ -92,6 +93,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }: any) {
       // console.log("token", token);
       session.accessToken = token.accessToken;
+      session.providerAccountId = token.providerAccountId;
       // console.log("session", session);
       return session;
     },

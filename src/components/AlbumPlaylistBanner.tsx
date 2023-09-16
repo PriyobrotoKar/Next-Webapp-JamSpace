@@ -3,35 +3,27 @@ import { Button } from "./ui/button";
 import { FaPlay } from "react-icons/fa6";
 import { format } from "@/lib/utils";
 import Image from "next/image";
+import { BsCheckLg } from "react-icons/bs";
 
-const AlbumPlaylistBanner = ({ data, user }: any) => {
+const AlbumPlaylistBanner = ({ data, user, isFollowed }: any) => {
   const likesOrDate = (): string => {
     const result =
       data.type === "playlist"
         ? `${format(data?.followers.total)} likes`
         : data.release_date.split("-")[0];
 
-    console.log(data.release_date);
     return result;
   };
   return (
     <>
       <div className="flex gap-10">
-        <div className="relative flex-[0_0_20rem]">
+        <div className="lg:flex-[0_0_16rem] xl:flex-[0_0_18rem] 2xl:flex-[0_0_20rem]">
           <Image
-            className=" rounded-xl"
+            className=" rounded-xl "
             src={data.images[0].url}
             alt=""
             width={300}
             height={300}
-          />
-          <Image
-            className="min-w-[16rem] rounded-xl blur-3xl absolute inset-0 -z-10"
-            src={data.images[0].url}
-            alt=""
-            width={300}
-            height={300}
-            quality={50}
           />
         </div>
         <div className="flex-1 flex flex-col gap-4 justify-end">
@@ -39,7 +31,7 @@ const AlbumPlaylistBanner = ({ data, user }: any) => {
           <div
             className={
               data.type === "playlist"
-                ? "text-7xl font-bold"
+                ? "fluid-4xl lg:fluid-3xl xl:fluid-4xl font-bold"
                 : "text-4xl font-semibold"
             }
           >
@@ -54,7 +46,7 @@ const AlbumPlaylistBanner = ({ data, user }: any) => {
                 />
                 <AvatarFallback>
                   <div className=" font-medium  text-center ">
-                    {data.name.at(0)?.toUpperCase()}
+                    {(user.display_name || user.name).at(0)?.toUpperCase()}
                   </div>
                 </AvatarFallback>
               </Avatar>
@@ -63,16 +55,20 @@ const AlbumPlaylistBanner = ({ data, user }: any) => {
               data.tracks.total
             } songs`}</div>
           </div>
-          <div className="flex items-center">
+          <div className="playAll flex items-center">
             <Button className="text-white text-xl p-6 space-x-2">
               <FaPlay />
               <div>PLAY</div>
             </Button>
-            <Button
-              variant={"link"}
-              className="text-white text-xl p-6 space-x-2"
-            >
-              <div>Follow</div>
+            <Button variant={"link"} className=" text-xl p-6 space-x-2">
+              {isFollowed ? (
+                <>
+                  <BsCheckLg className={"text-orange-600"} />{" "}
+                  <div className="text-white">Following</div>
+                </>
+              ) : (
+                <div className="text-white">Follow</div>
+              )}
             </Button>
           </div>
         </div>

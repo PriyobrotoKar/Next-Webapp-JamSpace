@@ -5,6 +5,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import fetchApi from "@/lib/fetchApi";
 
 import { FaPlay } from "react-icons/fa6";
+import { duration } from "@/lib/utils";
 
 const RecentlyPlayed = async () => {
   const session = await getServerSession(authOptions);
@@ -76,10 +77,7 @@ const RecentlyPlayed = async () => {
                   </div>
                 </div>
                 <div className="text-sm text-neutral-400 self-center">
-                  {(item.track.duration_ms / 60000).toFixed(0)}:
-                  {Math.floor((item.track.duration_ms / 1000) % 60) < 10
-                    ? `0${Math.floor((item.track.duration_ms / 1000) % 60)}`
-                    : Math.floor((item.track.duration_ms / 1000) % 60)}
+                  {duration(item.track.duration_ms)}
                 </div>
               </div>
             );

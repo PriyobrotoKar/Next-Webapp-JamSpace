@@ -1,4 +1,7 @@
 import React from "react";
+import NavLinks from "./NavLinks";
+import { FiSearch } from "react-icons/fi";
+import { Input } from "./ui/input";
 
 export const LoadingLib = () => {
   return (
@@ -96,5 +99,24 @@ export const LoadingRecently = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+export const LoaidingAlbumPlaylistBanner = () => {
+  return (
+    <>
+      <div className="flex gap-10 items-end">
+        <div className="flex-[0_0_20rem] h-[20rem] bg-orange-950/20 animate-pulse rounded-xl"></div>
+        <div className="flex-1 space-y-6">
+          <div className="h-8 w-20 bg-orange-950/20 animate-pulse rounded-full"></div>
+          <div className="h-20 bg-orange-950/20 animate-pulse rounded-xl"></div>
+          <div className="h-8  bg-orange-950/20 animate-pulse rounded-full"></div>
+          <div className="flex gap-4">
+            <div className="h-12 w-28 bg-orange-950/20 animate-pulse rounded-full"></div>
+            <div className="h-12 w-28 bg-orange-950/20 animate-pulse rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
