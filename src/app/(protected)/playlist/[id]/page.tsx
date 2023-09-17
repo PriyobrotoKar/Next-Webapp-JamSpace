@@ -1,27 +1,56 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import NavLinks from "@/components/NavLinks";
-import PlaylistBanner from "@/components/PlaylistBanner";
+import AlbumPlaylistBanner from "@/components/AlbumPlaylistBanner";
 import { Input } from "@/components/ui/input";
+import fetchApi from "@/lib/fetchApi";
+import { getServerSession } from "next-auth";
 import React from "react";
 import { FiSearch } from "react-icons/fi";
+import { LoaidingAlbumPlaylistBanner } from "@/components/LoadingUI";
+import AlbumPlaylistSongs from "@/components/AlbumPlaylistSongs";
+import { Metadata, ResolvingMetadata } from "next";
 
-const page = ({ params }: { params: { id: string } }) => {
+export async function generateMetadata(
+  { params }: { params: { id: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = params.id;
+  const session = await getServerSession(authOptions);
+
+  // fetch data
+  const playlist = await fetchApi(`playlists/${id}`, session!.accessToken);
+
+  return {
+    title: playlist.name,
+  };
+}
+
+const page = async ({ params }: { params: { id: string } }) => {
+  const session = await getServerSession(authOptions);
+  const playlistInfo = await fetchApi(
+    `playlists/${params.id}`,
+    session!.accessToken
+  );
+  const playlistUser = await fetchApi(
+    playlistInfo ? `users/${playlistInfo.owner.id}` : "",
+    session!.accessToken
+  );
+  const isFollowed = await fetchApi(
+    `playlists/${params.id}/followers/contains`,
+    session!.accessToken,
+    { ids: session!.providerAccountId }
+  );
   return (
-    <div>
-      <header className="backdrop-blur-md py-6">
-        <div className="flex justify-between items-center">
-          <NavLinks />
-          <div className="flex gap-1 items-center w-[18rem] border rounded-full px-4 focus-within:ring-1 ring-white">
-            <FiSearch />
-            <Input
-              type="text"
-              placeholder="Want do you want to listen to?"
-              className="border-none bg-transparent focus-visible:ring-offset-0 focus-visible:ring-0"
-            />
-          </div>
-        </div>
-      </header>
-      <PlaylistBanner params={params} />
-    </div>
+    // <LoaidingAlbumPlaylistBanner />
+    <section>
+      <AlbumPlaylistBanner
+        user={playlistUser}
+        data={playlistInfo}
+        isFollowed={isFollowed}
+      />
+      <AlbumPlaylistSongs data={playlistInfo} />
+    </section>
   );
 };
 

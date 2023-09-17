@@ -8,6 +8,9 @@ module.exports = {
   ],
 
   theme: {
+    fluidTypography: {
+      lineHeight: 1.2,
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -72,5 +75,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-fluid-typography"),
+  ],
 };
