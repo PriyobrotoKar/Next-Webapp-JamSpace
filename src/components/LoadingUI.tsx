@@ -120,3 +120,20 @@ export const LoaidingAlbumPlaylistBanner = () => {
     </>
   );
 };
+
+export const LoadingAlbumPlaylistSongs = () => {
+  return (
+    <div className="flex justify-between items-center px-4 py-2 mt-2">
+      <div className="flex items-center gap-4 px-8">
+        <div className="w-12 h-12 bg-orange-950/40 animate-pulse rounded-[8px]"></div>
+        <div className="space-y-2">
+          <div className="h-4 w-52 bg-orange-950/40 animate-pulse rounded-full"></div>
+          <div className="h-3 w-32 bg-orange-950/40 animate-pulse rounded-full"></div>
+        </div>
+      </div>
+      <div>
+        <div className="w-8 h-4 bg-orange-950/40 animate-pulse rounded-full"></div>
+      </div>
+    </div>
+  );
+};

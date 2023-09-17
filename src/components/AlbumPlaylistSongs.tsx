@@ -10,7 +10,7 @@ const AlbumPlaylistSongs = ({ data }: any) => {
     <div className="mt-10">
       <div className="flex justify-between gap-6 text-sm text-neutral-300 border-b px-3 py-2">
         <div className="flex flex-1 gap-4 items-center">
-          <div className="w-4 text-right">#</div>
+          <div className="w-6 text-right">#</div>
           <div>Title</div>
         </div>
         <div
@@ -38,7 +38,7 @@ const AlbumPlaylistSongs = ({ data }: any) => {
                 className="flex justify-between gap-6 items-center rounded-xl transition group hover:bg-orange-950/40 px-3 py-2"
               >
                 <div className="flex gap-4 items-center flex-1">
-                  <div className="min-w-[1rem] text-right relative">
+                  <div className="flex-[0_0_1.5rem] text-right relative">
                     <div className="group-hover:invisible text-neutral-400 visible">
                       {i + 1}
                     </div>
@@ -48,7 +48,7 @@ const AlbumPlaylistSongs = ({ data }: any) => {
                       }
                     />
                   </div>
-                  <div className="flex  gap-2">
+                  <div className="flex flex-1  gap-2">
                     <div className="flex-[0_0_auto]">
                       <Image
                         className=" rounded-[8px]"

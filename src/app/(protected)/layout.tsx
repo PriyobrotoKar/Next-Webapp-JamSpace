@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import SidebarRight from "@/components/SidebarRight";
 import SidebarLeft from "@/components/SidebarLeft";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -27,6 +28,7 @@ export default function RootLayout({
           <section className="flex flex-col flex-1 2xl:flex-[3_2_0%] overflow-y-auto ">
             <Navbar />
             {children}
+            <Footer />
           </section>
 
           <SidebarRight />
