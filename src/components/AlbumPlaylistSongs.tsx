@@ -68,11 +68,8 @@ const AlbumPlaylistSongs = ({ data }: any) => {
                       <div className="line-clamp-1 text-xs text-neutral-400">
                         {artists.map((artist: any, i: number) => {
                           return (
-                            <Link href={`/artist/${artist.id}`}>
-                              <span
-                                className="hover:text-white hover:underline"
-                                key={artist.id}
-                              >
+                            <Link key={artist.id} href={`/artist/${artist.id}`}>
+                              <span className="hover:text-white hover:underline">
                                 {artist.name +
                                   (i !== artists.length - 1 ? ", " : "")}
                               </span>
@@ -124,11 +121,8 @@ const AlbumPlaylistSongs = ({ data }: any) => {
                       <div className="line-clamp-1 text-xs text-neutral-400">
                         {artists.map((artist: any, i: number) => {
                           return (
-                            <Link href={`/artist/${artist.id}`}>
-                              <span
-                                className="group-hover:text-white hover:underline"
-                                key={artist.id}
-                              >
+                            <Link key={artist.id} href={`/artist/${artist.id}`}>
+                              <span className="group-hover:text-white hover:underline">
                                 {artist.name +
                                   (i !== artists.length - 1 ? ", " : "")}
                               </span>
