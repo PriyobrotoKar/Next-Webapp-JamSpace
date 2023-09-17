@@ -27,12 +27,12 @@ const AlbumPlaylistBanner = ({ data, user, isFollowed }: any) => {
           />
         </div>
         <div className="flex-1 flex flex-col gap-4 justify-end">
-          <div>Playlist</div>
+          <div>{data.type === "playlist" ? "Playlist" : "Album"}</div>
           <div
             className={
               data.type === "playlist"
                 ? "fluid-4xl lg:fluid-3xl xl:fluid-4xl font-bold"
-                : "text-4xl font-semibold"
+                : "md:fluid-xl xl:fluid-2xl font-semibold"
             }
           >
             {data.name}
