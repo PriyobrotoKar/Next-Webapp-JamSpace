@@ -46,7 +46,7 @@ export const NavLinks = () => {
 
 const Navbar = () => {
   return (
-    <header className="backdrop-blur-sm py-6 sticky top-0 before:absolute before:-top-[30%] before:left-0 before:right-0 before:rounded-b-full before:w-[95%] before:mx-auto before:h-[180%] before:bg-gradient-to-b before:from-orange-950/60 before:-z-10 before:blur-xl">
+    <header className="backdrop-blur-sm z-10 py-6 sticky top-0 before:absolute before:-top-[30%] before:left-0 before:right-0 before:rounded-b-full before:w-[95%] before:mx-auto before:h-[180%] before:bg-gradient-to-b before:from-orange-950/60 before:-z-10 before:blur-xl">
       <div className="flex justify-between items-center">
         <NavLinks />
         <div className="flex gap-1 items-center w-[18rem] border rounded-full px-4 focus-within:ring-1 ring-white">
