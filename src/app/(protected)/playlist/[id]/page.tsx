@@ -16,7 +16,7 @@ import { LuClock3 } from "react-icons/lu";
 
 export async function generateMetadata(
   { params }: { params: { id: string } },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // read route params
   const id = params.id;
@@ -34,16 +34,16 @@ const page = async ({ params }: { params: { id: string } }) => {
   const session = await getServerSession(authOptions);
   const playlistInfo = await fetchApi(
     `playlists/${params.id}`,
-    session!.accessToken
+    session!.accessToken,
   );
   const playlistUser = await fetchApi(
     playlistInfo ? `users/${playlistInfo.owner.id}` : "",
-    session!.accessToken
+    session!.accessToken,
   );
   const isFollowed = await fetchApi(
     `playlists/${params.id}/followers/contains`,
     session!.accessToken,
-    { ids: session!.providerAccountId }
+    { ids: session!.providerAccountId },
   );
   return (
     // <div>

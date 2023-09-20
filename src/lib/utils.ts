@@ -53,7 +53,7 @@ export function dateAdded(addedAt: string): string {
   const currDate = new Date();
 
   const days = Math.floor(
-    (currDate.getTime() - dateAdded.getTime()) / 86400000
+    (currDate.getTime() - dateAdded.getTime()) / 86400000,
   );
   if (days > 7 && days <= 30) {
     const weeks = Math.floor(days / 7);

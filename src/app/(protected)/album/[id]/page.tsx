@@ -8,7 +8,7 @@ import { Metadata, ResolvingMetadata } from "next";
 
 export async function generateMetadata(
   { params }: { params: { id: string } },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // read route params
   const id = params.id;
@@ -28,12 +28,12 @@ const page = async ({ params }: { params: { id: string } }) => {
   const AlbumInfo = await fetchApi(`albums/${params.id}`, session!.accessToken);
   const artist = await fetchApi(
     `artists/${AlbumInfo.artists[0].id}`,
-    session!.accessToken
+    session!.accessToken,
   );
   const isFollowed = await fetchApi(
     `me/albums/contains`,
     session!.accessToken,
-    { ids: AlbumInfo.id }
+    { ids: AlbumInfo.id },
   );
 
   return (

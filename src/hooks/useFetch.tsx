@@ -6,7 +6,7 @@ const BASE_URL = "https://api.spotify.com/v1/";
 export const fetchDataFromApi = async (
   url: string,
   token: string,
-  params?: { [key: string]: string | number }
+  params?: { [key: string]: string | number },
 ) => {
   if (!url) {
     const response = new Promise((resolve) => resolve(null));
@@ -25,7 +25,7 @@ export const fetchDataFromApi = async (
 const useFetch = (
   url: string,
   token?: string,
-  params?: { [key: string]: string | number }
+  params?: { [key: string]: string | number },
 ) => {
   const [data, setData] = useState<any>();
   const [loading, setLoading] = useState(true);

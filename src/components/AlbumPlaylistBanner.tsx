@@ -26,26 +26,26 @@ const AlbumPlaylistBanner = ({ data, user, isFollowed }: any) => {
             height={300}
           />
         </div>
-        <div className="flex-1 flex flex-col gap-4 justify-end">
+        <div className="flex flex-1 flex-col justify-end gap-4">
           <div>{data.type === "playlist" ? "Playlist" : "Album"}</div>
           <div
             className={
               data.type === "playlist"
-                ? "fluid-4xl lg:fluid-3xl xl:fluid-4xl font-bold"
-                : "md:fluid-xl xl:fluid-2xl font-semibold"
+                ? "font-bold fluid-4xl lg:fluid-3xl xl:fluid-4xl"
+                : "font-semibold md:fluid-xl xl:fluid-2xl"
             }
           >
             {data.name}
           </div>
-          <div className="flex gap-2 items-center">
-            <div className="w-8 h-8">
-              <Avatar className="w-full h-full">
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8">
+              <Avatar className="h-full w-full">
                 <AvatarImage
                   className="object-cover"
                   src={user.images[0].url || ""}
                 />
                 <AvatarFallback>
-                  <div className=" font-medium  text-center ">
+                  <div className=" text-center  font-medium ">
                     {(user.display_name || user.name).at(0)?.toUpperCase()}
                   </div>
                 </AvatarFallback>
@@ -56,11 +56,11 @@ const AlbumPlaylistBanner = ({ data, user, isFollowed }: any) => {
             } songs`}</div>
           </div>
           <div className="playAll flex items-center">
-            <Button className="text-white text-xl p-6 space-x-2">
+            <Button className="space-x-2 p-6 text-xl text-white">
               <FaPlay />
               <div>PLAY</div>
             </Button>
-            <Button variant={"link"} className=" text-xl p-6 space-x-2">
+            <Button variant={"link"} className=" space-x-2 p-6 text-xl">
               {isFollowed ? (
                 <>
                   <BsCheckLg className={"text-orange-600"} />{" "}

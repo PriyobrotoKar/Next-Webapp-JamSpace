@@ -4,20 +4,20 @@ import LoginButton from "../../../components/LoginButton";
 
 const page = () => {
   return (
-    <main className=" text-center  space-y-6 min-h-[30rem] h-[100svh] overflow-hidden relative flex justify-center items-center">
-      <div className="w-[95%] space-y-6 md:space-y-12 translate-y-[22%]">
+    <main className=" relative  flex h-[100svh] min-h-[30rem] items-center justify-center space-y-6 overflow-hidden text-center">
+      <div className="w-[95%] translate-y-[22%] space-y-6 md:space-y-12">
         <div>
           <p className="text-2xl  md:text-3xl">Welcome To</p>
-          <h1 className="text-5xl md:text-8xl font-medium">JamSpace</h1>
+          <h1 className="text-5xl font-medium md:text-8xl">JamSpace</h1>
         </div>
-        <p className="text-sm md:text-base md:mx-auto md:max-w-[40rem] px-2 font-light text-neutral-300">
+        <p className="px-2 text-sm font-light text-neutral-300 md:mx-auto md:max-w-[40rem] md:text-base">
           Discover a vast library of songs, albums, and playlists. Enjoy
           personalized recommendations, secure authentication, and effortless
           playlist creation. Immerse yourself in the magic of music with
           JamSpace today.
         </p>
         <LoginButton />
-        <div className=" bg-black -z-10  border rounded-3xl p-4 translate-x-4 w-[30rem] md:w-[80%] max-w-[60rem] translate-y-6 mx-auto">
+        <div className=" -z-10 mx-auto  w-[30rem] max-w-[60rem] translate-x-4 translate-y-6 rounded-3xl border bg-black p-4 md:w-[80%]">
           <Image
             className="rounded-2xl md:hidden"
             alt=""
@@ -26,7 +26,7 @@ const page = () => {
             height={300}
           />
           <Image
-            className="rounded-2xl hidden md:block w-full"
+            className="hidden w-full rounded-2xl md:block"
             alt=""
             src={"/loginDesktop.png"}
             width={1500}
@@ -34,7 +34,7 @@ const page = () => {
           />
         </div>
       </div>
-      <div className="absolute -bottom-40 w-full md:w-[70rem] h-[20rem] bg-orange-900 blur-[200px] -z-20 opacity-80 rounded-full"></div>
+      <div className="absolute -bottom-40 -z-20 h-[20rem] w-full rounded-full bg-orange-900 opacity-80 blur-[200px] md:w-[70rem]"></div>
     </main>
   );
 };

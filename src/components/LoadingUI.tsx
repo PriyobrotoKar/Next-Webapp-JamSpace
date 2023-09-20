@@ -6,10 +6,10 @@ import { Input } from "./ui/input";
 export const LoadingLib = () => {
   return (
     <div className="flex  gap-4">
-      <div className="bg-orange-950/20 animate-pulse md:w-12 md:h-12 xl:w-14 xl:h-14 rounded-xl"></div>
+      <div className="animate-pulse rounded-xl bg-orange-950/20 md:h-12 md:w-12 xl:h-14 xl:w-14"></div>
       <div className="flex-1 space-y-2 md:hidden xl:block">
-        <div className="h-5 rounded-xl animate-pulse bg-orange-950/20"></div>
-        <div className="h-4 w-3/4 rounded-xl animate-pulse bg-orange-950/20"></div>
+        <div className="h-5 animate-pulse rounded-xl bg-orange-950/20"></div>
+        <div className="h-4 w-3/4 animate-pulse rounded-xl bg-orange-950/20"></div>
       </div>
     </div>
   );
@@ -17,14 +17,14 @@ export const LoadingLib = () => {
 
 export const LoadingAbout = () => {
   return (
-    <div className="w-full bg-orange-950/20 p-4 rounded-2xl space-y-4">
-      <div className="h-52 bg-orange-950/20 animate-pulse rounded-xl"></div>
-      <div className="h-6 bg-orange-950/20 animate-pulse rounded-xl"></div>
-      <div className="h-4 w-3/4 bg-orange-950/20 animate-pulse rounded-xl"></div>
+    <div className="w-full space-y-4 rounded-2xl bg-orange-950/20 p-4">
+      <div className="h-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+      <div className="h-6 animate-pulse rounded-xl bg-orange-950/20"></div>
+      <div className="h-4 w-3/4 animate-pulse rounded-xl bg-orange-950/20"></div>
       <div className="flex gap-4">
-        <div className="w-20 h-8 bg-orange-950/20 animate-pulse rounded-full"></div>
-        <div className="w-20 h-8 bg-orange-950/20 animate-pulse rounded-full"></div>
-        <div className="w-20 h-8 bg-orange-950/20 animate-pulse rounded-full"></div>
+        <div className="h-8 w-20 animate-pulse rounded-full bg-orange-950/20"></div>
+        <div className="h-8 w-20 animate-pulse rounded-full bg-orange-950/20"></div>
+        <div className="h-8 w-20 animate-pulse rounded-full bg-orange-950/20"></div>
       </div>
     </div>
   );
@@ -34,16 +34,16 @@ export const LoadingHomeBanner = () => {
   return (
     <>
       <div className="flex-[2_2_0%] space-y-6">
-        <div className="h-4 w-16 bg-orange-950/20 rounded-full animate-pulse"></div>
-        <div className="h-24 bg-orange-950/20 rounded-xl animate-pulse"></div>
-        <div className="h-6 bg-orange-950/20 rounded-full animate-pulse"></div>
-        <div className="h-10 flex gap-6">
-          <div className="w-28 bg-orange-950/20 rounded-full animate-pulse"></div>
-          <div className="w-28 bg-orange-950/20 rounded-full animate-pulse"></div>
+        <div className="h-4 w-16 animate-pulse rounded-full bg-orange-950/20"></div>
+        <div className="h-24 animate-pulse rounded-xl bg-orange-950/20"></div>
+        <div className="h-6 animate-pulse rounded-full bg-orange-950/20"></div>
+        <div className="flex h-10 gap-6">
+          <div className="w-28 animate-pulse rounded-full bg-orange-950/20"></div>
+          <div className="w-28 animate-pulse rounded-full bg-orange-950/20"></div>
         </div>
       </div>
 
-      <div className="flex-[0_0_16rem] h-[16rem]  bg-orange-950/20 rounded-xl animate-pulse"></div>
+      <div className="h-[16rem] flex-[0_0_16rem]  animate-pulse rounded-xl bg-orange-950/20"></div>
     </>
   );
 };
@@ -51,51 +51,51 @@ export const LoadingHomeBanner = () => {
 export const LoadingRecently = () => {
   return (
     <div className="flex gap-10">
-      <div className="space-y-3 flex-1">
-        <div className="bg-orange-950/20 animate-pulse aspect-square rounded-xl"></div>
-        <div className="bg-orange-950/20 animate-pulse h-6 rounded-full"></div>
-        <div className="bg-orange-950/20 animate-pulse h-4 rounded-full"></div>
+      <div className="flex-1 space-y-3">
+        <div className="aspect-square animate-pulse rounded-xl bg-orange-950/20"></div>
+        <div className="h-6 animate-pulse rounded-full bg-orange-950/20"></div>
+        <div className="h-4 animate-pulse rounded-full bg-orange-950/20"></div>
       </div>
-      <div className="flex-[2_2_0%] xl:flex-[3_3_0%] space-y-4">
-        <div className="bg-orange-950/10  h-[4.3rem] rounded-xl px-3 py-2 flex gap-4 justify-between items-center">
-          <div className="h-full flex gap-4 items-center">
-            <div className="bg-orange-950/20 animate-pulse rounded-xl w-[3.3rem] h-full"></div>
+      <div className="flex-[2_2_0%] space-y-4 xl:flex-[3_3_0%]">
+        <div className="flex  h-[4.3rem] items-center justify-between gap-4 rounded-xl bg-orange-950/10 px-3 py-2">
+          <div className="flex h-full items-center gap-4">
+            <div className="h-full w-[3.3rem] animate-pulse rounded-xl bg-orange-950/20"></div>
             <div className="space-y-3">
-              <div className="bg-orange-950/20 animate-pulse rounded-xl w-52 h-5"></div>
-              <div className="bg-orange-950/20 animate-pulse rounded-xl w-40 h-3"></div>
+              <div className="h-5 w-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+              <div className="h-3 w-40 animate-pulse rounded-xl bg-orange-950/20"></div>
             </div>
           </div>
-          <div className="bg-orange-950/20 animate-pulse rounded-xl h-4 w-8"></div>
+          <div className="h-4 w-8 animate-pulse rounded-xl bg-orange-950/20"></div>
         </div>
-        <div className="bg-orange-950/10  h-[4.3rem] rounded-xl  px-3 py-2 flex gap-4 justify-between items-center">
-          <div className="h-full flex gap-4 items-center">
-            <div className="bg-orange-950/20 animate-pulse rounded-xl w-[3.3rem] h-full"></div>
+        <div className="flex  h-[4.3rem] items-center  justify-between gap-4 rounded-xl bg-orange-950/10 px-3 py-2">
+          <div className="flex h-full items-center gap-4">
+            <div className="h-full w-[3.3rem] animate-pulse rounded-xl bg-orange-950/20"></div>
             <div className="space-y-3">
-              <div className="bg-orange-950/20 animate-pulse rounded-xl w-52 h-5"></div>
-              <div className="bg-orange-950/20 animate-pulse rounded-xl w-40 h-3"></div>
+              <div className="h-5 w-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+              <div className="h-3 w-40 animate-pulse rounded-xl bg-orange-950/20"></div>
             </div>
           </div>
-          <div className="bg-orange-950/20 animate-pulse rounded-xl h-4 w-8"></div>
+          <div className="h-4 w-8 animate-pulse rounded-xl bg-orange-950/20"></div>
         </div>
-        <div className="bg-orange-950/10  h-[4.3rem] rounded-xl  px-3 py-2 flex gap-4 justify-between items-center">
-          <div className="h-full flex gap-4 items-center">
-            <div className="bg-orange-950/20 animate-pulse rounded-xl w-[3.3rem] h-full"></div>
+        <div className="flex  h-[4.3rem] items-center  justify-between gap-4 rounded-xl bg-orange-950/10 px-3 py-2">
+          <div className="flex h-full items-center gap-4">
+            <div className="h-full w-[3.3rem] animate-pulse rounded-xl bg-orange-950/20"></div>
             <div className="space-y-3">
-              <div className="bg-orange-950/20 animate-pulse rounded-xl w-52 h-5"></div>
-              <div className="bg-orange-950/20 animate-pulse rounded-xl w-40 h-3"></div>
+              <div className="h-5 w-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+              <div className="h-3 w-40 animate-pulse rounded-xl bg-orange-950/20"></div>
             </div>
           </div>
-          <div className="bg-orange-950/20 animate-pulse rounded-xl h-4 w-8"></div>
+          <div className="h-4 w-8 animate-pulse rounded-xl bg-orange-950/20"></div>
         </div>
-        <div className="bg-orange-950/10  h-[4.3rem] rounded-xl  px-3 py-2 flex gap-4 justify-between items-center">
-          <div className="h-full flex gap-4 items-center">
-            <div className="bg-orange-950/20 animate-pulse rounded-xl w-[3.3rem] h-full"></div>
+        <div className="flex  h-[4.3rem] items-center  justify-between gap-4 rounded-xl bg-orange-950/10 px-3 py-2">
+          <div className="flex h-full items-center gap-4">
+            <div className="h-full w-[3.3rem] animate-pulse rounded-xl bg-orange-950/20"></div>
             <div className="space-y-3">
-              <div className="bg-orange-950/20 animate-pulse rounded-xl w-52 h-5"></div>
-              <div className="bg-orange-950/20 animate-pulse rounded-xl w-40 h-3"></div>
+              <div className="h-5 w-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+              <div className="h-3 w-40 animate-pulse rounded-xl bg-orange-950/20"></div>
             </div>
           </div>
-          <div className="bg-orange-950/20 animate-pulse rounded-xl h-4 w-8"></div>
+          <div className="h-4 w-8 animate-pulse rounded-xl bg-orange-950/20"></div>
         </div>
       </div>
     </div>
@@ -105,15 +105,15 @@ export const LoadingRecently = () => {
 export const LoaidingAlbumPlaylistBanner = () => {
   return (
     <>
-      <div className="flex gap-10 items-end">
-        <div className="flex-[0_0_20rem] h-[20rem] bg-orange-950/20 animate-pulse rounded-xl"></div>
+      <div className="flex items-end gap-10">
+        <div className="h-[20rem] flex-[0_0_20rem] animate-pulse rounded-xl bg-orange-950/20"></div>
         <div className="flex-1 space-y-6">
-          <div className="h-8 w-20 bg-orange-950/20 animate-pulse rounded-full"></div>
-          <div className="h-20 bg-orange-950/20 animate-pulse rounded-xl"></div>
-          <div className="h-8  bg-orange-950/20 animate-pulse rounded-full"></div>
+          <div className="h-8 w-20 animate-pulse rounded-full bg-orange-950/20"></div>
+          <div className="h-20 animate-pulse rounded-xl bg-orange-950/20"></div>
+          <div className="h-8  animate-pulse rounded-full bg-orange-950/20"></div>
           <div className="flex gap-4">
-            <div className="h-12 w-28 bg-orange-950/20 animate-pulse rounded-full"></div>
-            <div className="h-12 w-28 bg-orange-950/20 animate-pulse rounded-full"></div>
+            <div className="h-12 w-28 animate-pulse rounded-full bg-orange-950/20"></div>
+            <div className="h-12 w-28 animate-pulse rounded-full bg-orange-950/20"></div>
           </div>
         </div>
       </div>
@@ -123,16 +123,16 @@ export const LoaidingAlbumPlaylistBanner = () => {
 
 export const LoadingAlbumPlaylistSongs = () => {
   return (
-    <div className="flex justify-between items-center px-4 py-2 mt-2">
+    <div className="mt-2 flex items-center justify-between px-4 py-2">
       <div className="flex items-center gap-4 px-8">
-        <div className="w-12 h-12 bg-orange-950/40 animate-pulse rounded-[8px]"></div>
+        <div className="h-12 w-12 animate-pulse rounded-[8px] bg-orange-950/40"></div>
         <div className="space-y-2">
-          <div className="h-4 w-52 bg-orange-950/40 animate-pulse rounded-full"></div>
-          <div className="h-3 w-32 bg-orange-950/40 animate-pulse rounded-full"></div>
+          <div className="h-4 w-52 animate-pulse rounded-full bg-orange-950/40"></div>
+          <div className="h-3 w-32 animate-pulse rounded-full bg-orange-950/40"></div>
         </div>
       </div>
       <div>
-        <div className="w-8 h-4 bg-orange-950/40 animate-pulse rounded-full"></div>
+        <div className="h-4 w-8 animate-pulse rounded-full bg-orange-950/40"></div>
       </div>
     </div>
   );

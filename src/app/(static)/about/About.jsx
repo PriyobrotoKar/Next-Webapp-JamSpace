@@ -32,7 +32,7 @@ const About = () => {
         autoAlpha: 1,
         scale: 1,
         duration: 2,
-      }
+      },
     ).fromTo(
       mainRef.current,
       {
@@ -43,7 +43,7 @@ const About = () => {
         autoAlpha: 1,
         delay: -1,
         duration: 1.5,
-      }
+      },
     );
 
     gsap.fromTo(
@@ -62,29 +62,29 @@ const About = () => {
           end: "bottom top",
           scrub: true,
         },
-      }
+      },
     );
   }, []);
   return (
     <div className="">
-      <div className="min-h-[20rem] h-[45vh] w-full overflow-hidden  sticky -translate-y-24 top-24 -z-10 before:bg-gradient-to-b before:to-black before:h-full before:block before:z-10 before:from-transparent before:absolute before:inset-0">
+      <div className="sticky top-24 -z-10 h-[45vh]  min-h-[20rem] w-full -translate-y-24 overflow-hidden before:absolute before:inset-0 before:z-10 before:block before:h-full before:bg-gradient-to-b before:from-transparent before:to-black">
         <Image
           ref={bannerRef}
           alt="about banner"
-          className="object-cover object-[50%_50%] h-full opacity-0"
+          className="h-full object-cover object-[50%_50%] opacity-0"
           fill
           src={"/aboutbanner.png"}
         />
       </div>
       <main
         ref={mainRef}
-        className="px-6 mx-auto  space-y-4 opacity-0 container xl:max-w-screen-lg"
+        className="container mx-auto  space-y-4 px-6 opacity-0 xl:max-w-screen-lg"
       >
         <div>
-          <h1 className="text-5xl font-semibold py-6 md:py-10">
+          <h1 className="py-6 text-5xl font-semibold md:py-10">
             About JamSpace
           </h1>
-          <p className="text-sm md:text-base leading-relaxed text-neutral-300">
+          <p className="text-sm leading-relaxed text-neutral-300 md:text-base">
             JamSpace combines NextJS, NextAuth, Spotify API, and Redux to offer
             a seamless music streaming experience. Discover a vast library of
             songs, albums, and playlists. Enjoy personalized recommendations,
@@ -98,12 +98,12 @@ const About = () => {
           </p>
         </div>
         <div>
-          <h2 className="text-4xl font-medium py-6">Role in this project</h2>
+          <h2 className="py-6 text-4xl font-medium">Role in this project</h2>
           <p className="text-sm md:text-base">Front-end Developer</p>
         </div>
         <div>
-          <h2 className="text-4xl font-medium py-6">Features Implemented</h2>
-          <ul className="list-disc  text-neutral-300 list-outside pl-5 text-sm md:text-base space-y-2">
+          <h2 className="py-6 text-4xl font-medium">Features Implemented</h2>
+          <ul className="list-outside  list-disc space-y-2 pl-5 text-sm text-neutral-300 md:text-base">
             <li>
               Vast Music Library: Access a vast collection of songs, albums, and
               playlists across various genres and artists.
@@ -150,8 +150,8 @@ const About = () => {
           </ul>
         </div>
         <div>
-          <h2 className="text-4xl font-medium py-6">Tech Stack</h2>
-          <div className=" flex gap-6 flex-wrap justify-center md:justify-start [&>*]:flex-1 items-center max-w-3xl">
+          <h2 className="py-6 text-4xl font-medium">Tech Stack</h2>
+          <div className=" flex max-w-3xl flex-wrap items-center justify-center gap-6 md:justify-start [&>*]:flex-1">
             <div className="group flex flex-col items-center gap-1">
               <Image
                 className="cursor-pointer"
@@ -160,7 +160,7 @@ const About = () => {
                 width={40}
                 height={40}
               />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
                 React
               </div>
             </div>
@@ -172,7 +172,7 @@ const About = () => {
                 width={40}
                 height={40}
               />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
                 Next JS
               </div>
             </div>
@@ -184,7 +184,7 @@ const About = () => {
                 width={40}
                 height={40}
               />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
                 Redux
               </div>
             </div>
@@ -196,7 +196,7 @@ const About = () => {
                 width={40}
                 height={40}
               />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
                 Tailwind
               </div>
             </div>
@@ -208,7 +208,7 @@ const About = () => {
                 width={40}
                 height={40}
               />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
                 Spotify API
               </div>
             </div>
@@ -220,7 +220,7 @@ const About = () => {
                 width={40}
                 height={40}
               />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
                 NextAuth
               </div>
             </div>
@@ -232,7 +232,7 @@ const About = () => {
                 width={40}
                 height={40}
               />
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
                 Git
               </div>
             </div>
