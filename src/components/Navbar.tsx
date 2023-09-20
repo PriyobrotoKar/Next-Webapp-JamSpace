@@ -14,7 +14,7 @@ export const NavLinks = () => {
         className={
           pathname == "/"
             ? ""
-            : "text-neutral-400 hover:text-neutral-200 transition-colors"
+            : "text-neutral-400 transition-colors hover:text-neutral-200"
         }
         href={"/"}
       >
@@ -24,7 +24,7 @@ export const NavLinks = () => {
         className={
           pathname == "/podcasts"
             ? ""
-            : "text-neutral-400 hover:text-neutral-200 transition-colors"
+            : "text-neutral-400 transition-colors hover:text-neutral-200"
         }
         href={"/"}
       >
@@ -34,7 +34,7 @@ export const NavLinks = () => {
         className={
           pathname == "/live"
             ? ""
-            : "text-neutral-400 hover:text-neutral-200 transition-colors"
+            : "text-neutral-400 transition-colors hover:text-neutral-200"
         }
         href={"/"}
       >
@@ -46,15 +46,15 @@ export const NavLinks = () => {
 
 const Navbar = () => {
   return (
-    <header className="backdrop-blur-sm z-10 py-6 sticky top-0 before:absolute before:-top-[30%] before:left-0 before:right-0 before:rounded-b-full before:w-[95%] before:mx-auto before:h-[180%] before:bg-gradient-to-b before:from-orange-950/60 before:-z-10 before:blur-xl">
-      <div className="flex justify-between items-center">
+    <header className="sticky top-0 z-10 py-6 backdrop-blur-sm before:absolute before:-top-[30%] before:left-0 before:right-0 before:-z-10 before:mx-auto before:h-[180%] before:w-[95%] before:rounded-b-full before:bg-gradient-to-b before:from-orange-950/60 before:blur-xl">
+      <div className="flex items-center justify-between">
         <NavLinks />
-        <div className="flex gap-1 items-center w-[18rem] border rounded-full px-4 focus-within:ring-1 ring-white">
+        <div className="flex w-[18rem] items-center gap-1 rounded-full border px-4 ring-white focus-within:ring-1">
           <FiSearch />
           <Input
             type="text"
             placeholder="Want do you want to listen to?"
-            className="border-none bg-transparent focus-visible:ring-offset-0 focus-visible:ring-0"
+            className="border-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
           />
         </div>
       </div>

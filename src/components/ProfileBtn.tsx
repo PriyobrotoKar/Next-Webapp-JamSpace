@@ -16,21 +16,21 @@ const ProfileBtn = () => {
   return (
     <div
       className={twJoin(
-        "flex gap-4 min-w-[10rem] max-w-fit ml-auto items-center bg-orange-600/10 hover:bg-orange-600/20 transition-colors rounded-full pr-8",
-        !data && "animate-pulse"
+        "ml-auto flex min-w-[10rem] max-w-fit items-center gap-4 rounded-full bg-orange-600/10 pr-8 transition-colors hover:bg-orange-600/20",
+        !data && "animate-pulse",
       )}
     >
       <Avatar>
         <AvatarImage src={data?.user?.image || ""} />
         <AvatarFallback>
-          <div className="text-[1.1rem] font-medium  text-center ">
+          <div className="text-center text-[1.1rem]  font-medium ">
             {data?.user?.name?.at(0)?.toUpperCase()}
           </div>
         </AvatarFallback>
       </Avatar>
       <DropdownMenu>
         <DropdownMenuTrigger>{data?.user?.name}</DropdownMenuTrigger>
-        <DropdownMenuContent className="rounded-[10px] border-none mt-2 bg-[#150906bd] backdrop-blur-md p-2  origin-top">
+        <DropdownMenuContent className="mt-2 origin-top rounded-[10px] border-none bg-[#150906bd] p-2  backdrop-blur-md">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="rounded-[10px]">

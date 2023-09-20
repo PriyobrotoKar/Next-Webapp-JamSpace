@@ -12,7 +12,7 @@ const RecentlyPlayed = async () => {
   const data = await fetchApi(
     "me/player/recently-played",
     session!.accessToken,
-    { limit: 5 }
+    { limit: 5 },
   );
   return (
     <div>
@@ -39,22 +39,22 @@ const RecentlyPlayed = async () => {
             </p>
           </div>
         </div>
-        <div className="md:flex-[2_2_0%] xl:flex-[3_3_0%] space-y-2">
+        <div className="space-y-2 md:flex-[2_2_0%] xl:flex-[3_3_0%]">
           {data?.items.map((item: any, i: number) => {
             if (i === 0) return;
             return (
               <div
                 key={item.track.id}
-                className="flex justify-between gap-4 hover:bg-orange-950/30 transition-colors p-3 group rounded-[12px]"
+                className="group flex justify-between gap-4 rounded-[12px] p-3 transition-colors hover:bg-orange-950/30"
               >
                 <div className="flex group-hover:gap-4">
-                  <div className="self-center opacity-0 w-0 group-hover:opacity-100">
+                  <div className="w-0 self-center opacity-0 group-hover:opacity-100">
                     <FaPlay />
                   </div>
-                  <div className="flex gap-4 group-hover:translate-x-4 transition-all">
+                  <div className="flex gap-4 transition-all group-hover:translate-x-4">
                     <div>
                       <Image
-                        className="rounded-[8px] min-w-[3rem]"
+                        className="min-w-[3rem] rounded-[8px]"
                         src={item.track.album.images[2].url}
                         alt=""
                         width={50}
@@ -76,7 +76,7 @@ const RecentlyPlayed = async () => {
                     </div>
                   </div>
                 </div>
-                <div className="text-sm text-neutral-400 self-center">
+                <div className="self-center text-sm text-neutral-400">
                   {duration(item.track.duration_ms)}
                 </div>
               </div>

@@ -40,10 +40,10 @@ const refreshAccessToken = async (token: any) => {
         Authorization:
           "Basic " +
           new (Buffer as any).from(
-            process.env.SPOTIFY_CLIENT_ID + ":" + process.env.SPOTIFY_SECRET
+            process.env.SPOTIFY_CLIENT_ID + ":" + process.env.SPOTIFY_SECRET,
           ).toString("base64"),
       },
-    }
+    },
   );
   console.log(response.data);
 

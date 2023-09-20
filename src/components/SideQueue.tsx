@@ -19,11 +19,11 @@ const SideQueue = () => {
         <>
           <Link
             href={`/${data.queue[0]?.type}/${data.queue[0]?.id}`}
-            className="flex gap-3 p-2 xl:pr-4 hover:bg-orange-950/30 md:rounded-[8px] xl:rounded-xl transition-colors"
+            className="flex gap-3 p-2 transition-colors hover:bg-orange-950/30 md:rounded-[8px] xl:rounded-xl xl:pr-4"
           >
             <div>
               <Image
-                className="rounded-xl min-w-[3rem]"
+                className="min-w-[3rem] rounded-xl"
                 alt=""
                 src={data.queue[0]?.album.images[0].url}
                 width={52}
@@ -31,7 +31,7 @@ const SideQueue = () => {
               />
             </div>
             <div>
-              <div className="font-medium line-clamp-1 ">
+              <div className="line-clamp-1 font-medium ">
                 {data.queue[0]?.name}
               </div>
               <div className=" line-clamp-1">

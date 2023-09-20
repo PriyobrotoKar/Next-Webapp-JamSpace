@@ -37,24 +37,24 @@ const Library = async () => {
   }
 
   return (
-    <div className="min-h-0  flex flex-col">
+    <div className="flex  min-h-0 flex-col">
       <h2>
         <div className="lg:hidden ">
-          <VscLibrary className={"text-neutral-400 text-2xl mx-auto"} />
+          <VscLibrary className={"mx-auto text-2xl text-neutral-400"} />
         </div>
         <div className="hidden lg:block">Library</div>
       </h2>
 
-      <div className="min-h-0 overflow-y-auto invisible hover:visible  ">
-        <div className="mt-3 space-y-1 visible">
+      <div className="invisible min-h-0 overflow-y-auto hover:visible  ">
+        <div className="visible mt-3 space-y-1">
           {items?.map((item: any) => {
             return (
               <Link
                 key={item.id}
                 href={`/${item.type}/${item.id}`}
-                className="flex gap-3 p-2 xl:pr-4 hover:bg-orange-950/30 md:rounded-[8px] xl:rounded-xl transition-colors"
+                className="flex gap-3 p-2 transition-colors hover:bg-orange-950/30 md:rounded-[8px] xl:rounded-xl xl:pr-4"
               >
-                <div className="min-w-full xl:min-w-max  md:rounded-[6px] xl:rounded-xl overflow-hidden">
+                <div className="min-w-full overflow-hidden  md:rounded-[6px] xl:min-w-max xl:rounded-xl">
                   <Image
                     alt=""
                     src={item.images[0].url}
@@ -63,7 +63,7 @@ const Library = async () => {
                   />
                 </div>
                 <div className="md:hidden xl:block">
-                  <div className="font-medium line-clamp-1 ">{item.name}</div>
+                  <div className="line-clamp-1 font-medium ">{item.name}</div>
                   <div className="text-sm text-neutral-400">
                     {item.type === "playlist" ? "Playlist" : "Album"}
                   </div>

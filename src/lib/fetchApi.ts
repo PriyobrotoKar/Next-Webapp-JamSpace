@@ -11,7 +11,7 @@ const fetchApi = async (url: string, token: string, params?: any) => {
         Authorization: `Bearer ${token}`,
         "Accept-Language": "en",
       },
-    }
+    },
   );
   return await response.json();
 };

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import SidebarRight from "@/components/SidebarRight";
 import SidebarLeft from "@/components/SidebarLeft";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -21,12 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <NextAuthProvider>
-      <section className="font-Poppins min-h-[100svh] bg-gradient-to-b from-orange-900/25 to-40%">
-        <main className="mx-auto max-w-[2000px] flex gap-0 lg:gap-6 justify-between h-[100svh]">
+      <section className="min-h-[100svh] bg-gradient-to-b from-orange-900/25 to-40% font-Poppins">
+        <main className="mx-auto flex h-[100svh] max-w-[2000px] justify-between gap-0 lg:gap-6">
           <SidebarLeft />
-          <section className="flex flex-col flex-1 2xl:flex-[3_2_0%] overflow-y-auto ">
+          <section className="flex flex-1 flex-col overflow-y-auto 2xl:flex-[3_2_0%] ">
             <Navbar />
             {children}
+            <Footer />
           </section>
 
           <SidebarRight />

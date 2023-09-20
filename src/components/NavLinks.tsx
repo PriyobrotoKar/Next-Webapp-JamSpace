@@ -10,7 +10,7 @@ const NavLinks = () => {
         className={
           pathname == "/"
             ? ""
-            : "text-neutral-400 hover:text-neutral-200 transition-colors"
+            : "text-neutral-400 transition-colors hover:text-neutral-200"
         }
         href={"/"}
       >
@@ -20,7 +20,7 @@ const NavLinks = () => {
         className={
           pathname == "/podcasts"
             ? ""
-            : "text-neutral-400 hover:text-neutral-200 transition-colors"
+            : "text-neutral-400 transition-colors hover:text-neutral-200"
         }
         href={"/"}
       >
@@ -30,7 +30,7 @@ const NavLinks = () => {
         className={
           pathname == "/live"
             ? ""
-            : "text-neutral-400 hover:text-neutral-200 transition-colors"
+            : "text-neutral-400 transition-colors hover:text-neutral-200"
         }
         href={"/"}
       >

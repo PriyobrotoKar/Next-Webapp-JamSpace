@@ -14,38 +14,38 @@ const HomeBanner = async () => {
     {
       country: "IN",
       limit: 4,
-    }
+    },
   );
 
   const featPlaylist = data.playlists.items[Math.floor(Math.random() * 4)];
 
   return (
-    <div className="flex gap-10 justify-between bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-6 2xl:p-8 rounded-3xl  w-full">
-      <div className="flex flex-col gap-4 xl:gap-6 justify-between flex-[2_2_0%]">
+    <div className="flex w-full justify-between gap-10 rounded-3xl bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-6  2xl:p-8">
+      <div className="flex flex-[2_2_0%] flex-col justify-between gap-4 xl:gap-6">
         <div className="space-y-3 xl:space-y-4">
           <div className="text-neutral-300">PLAYLIST</div>
-          <h2 className="text-4xl xl:text-5xl 2xl:text-6xl font-medium">
+          <h2 className="text-4xl font-medium xl:text-5xl 2xl:text-6xl">
             {featPlaylist?.name}
           </h2>
-          <p className="2xl:text-xl text-neutral-500 ">
+          <p className="text-neutral-500 2xl:text-xl ">
             {featPlaylist?.description}
           </p>
         </div>
-        <div className="flex gap-4 items-center">
-          <Button className=" xl:text-xl 2xl:text-2xl font-semibold p-5 xl:p-6 2xl:p-7">
+        <div className="flex items-center gap-4">
+          <Button className=" p-5 font-semibold xl:p-6 xl:text-xl 2xl:p-7 2xl:text-2xl">
             PLAY
           </Button>
           <Button
             variant={"secondary"}
-            className=" xl:text-xl 2xl:text-2xl font-medium p-5 xl:p-6 2xl:p-7"
+            className=" p-5 font-medium xl:p-6 xl:text-xl 2xl:p-7 2xl:text-2xl"
           >
             FOLLOW
           </Button>
         </div>
       </div>
-      <div className="flex-[1.5_1.5_0%] max-w-[19rem] ">
+      <div className="max-w-[19rem] flex-[1.5_1.5_0%] ">
         <Image
-          className="rounded-2xl h-full  w-full"
+          className="h-full w-full  rounded-2xl"
           alt=""
           src={featPlaylist?.images[0].url || "/no-image.png"}
           priority

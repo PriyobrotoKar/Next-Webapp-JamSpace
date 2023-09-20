@@ -7,7 +7,7 @@ import { FiSearch } from "react-icons/fi";
 export default function Home() {
   return (
     <>
-      <section className="pr-6 lg:pr-0 space-y-8 overflow-y-auto ">
+      <section className="space-y-8 pr-6 lg:pr-0 ">
         <HomeBanner />
         <RecentlyPlayed />
       </section>

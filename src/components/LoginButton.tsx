@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const LoginButton = () => {
   return (
     <button
-      className="bg-orange-600  rounded-full text-xl font-medium px-2 py-2 flex items-center gap-2 pr-4 mx-auto hover:bg-green-600 transition duration-500"
+      className="mx-auto  flex items-center gap-2 rounded-full bg-orange-600 px-2 py-2 pr-4 text-xl font-medium transition duration-500 hover:bg-green-600"
       onClick={() => {
         toast.loading("Logging in");
         signIn("spotify", { callbackUrl: "/" });

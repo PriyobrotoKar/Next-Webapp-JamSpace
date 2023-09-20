@@ -8,9 +8,9 @@ import Link from "next/link";
 const AlbumPlaylistSongs = ({ data }: any) => {
   return (
     <div className="mt-10">
-      <div className="flex justify-between gap-6 text-sm text-neutral-300 border-b px-3 py-2">
-        <div className="flex flex-1 gap-4 items-center">
-          <div className="w-4 text-right">#</div>
+      <div className="flex justify-between gap-6 border-b px-3 py-2 text-sm text-neutral-300">
+        <div className="flex flex-1 items-center gap-4">
+          <div className="w-6 text-right">#</div>
           <div>Title</div>
         </div>
         <div
@@ -25,7 +25,7 @@ const AlbumPlaylistSongs = ({ data }: any) => {
           <LuClock3 className="w-7 text-center" />
         </div>
       </div>
-      <div className="space-y-2 mt-4">
+      <div className="mt-4 space-y-2">
         {data.tracks.items.map((item: any, i: number) => {
           if (data.type === "playlist") {
             const {
@@ -35,20 +35,20 @@ const AlbumPlaylistSongs = ({ data }: any) => {
             return (
               <div
                 key={id}
-                className="flex justify-between gap-6 items-center rounded-xl transition group hover:bg-orange-950/40 px-3 py-2"
+                className="group flex items-center justify-between gap-6 rounded-xl px-3 py-2 transition hover:bg-orange-950/40"
               >
-                <div className="flex gap-4 items-center flex-1">
-                  <div className="min-w-[1rem] text-right relative">
-                    <div className="group-hover:invisible text-neutral-400 visible">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-[0_0_1.5rem] text-right">
+                    <div className="visible text-neutral-400 group-hover:invisible">
                       {i + 1}
                     </div>
                     <FaPlay
                       className={
-                        "group-hover:visible invisible absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2"
+                        "invisible absolute left-1/2 top-1/2 -translate-x-1/4 -translate-y-1/2 group-hover:visible"
                       }
                     />
                   </div>
-                  <div className="flex  gap-2">
+                  <div className="flex flex-1  gap-2">
                     <div className="flex-[0_0_auto]">
                       <Image
                         className=" rounded-[8px]"
@@ -58,7 +58,7 @@ const AlbumPlaylistSongs = ({ data }: any) => {
                         height={48}
                       />
                     </div>
-                    <div className="space-y-1 flex-1">
+                    <div className="flex-1 space-y-1">
                       <Link
                         href={`/track/${id}`}
                         className="line-clamp-1 hover:underline"
@@ -80,10 +80,10 @@ const AlbumPlaylistSongs = ({ data }: any) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-between text-center flex-1 text-neutral-400 text-sm">
+                <div className="flex flex-1 justify-between text-center text-sm text-neutral-400">
                   <Link
                     href={`/album/${album.id}`}
-                    className="flex-1 line-clamp-1 text-left group-hover:text-white hover:underline"
+                    className="line-clamp-1 flex-1 text-left hover:underline group-hover:text-white"
                   >
                     {album.name}
                   </Link>
@@ -97,21 +97,21 @@ const AlbumPlaylistSongs = ({ data }: any) => {
             return (
               <div
                 key={id}
-                className="flex justify-between gap-6 items-center rounded-xl transition group hover:bg-orange-950/40 px-3 py-2"
+                className="group flex items-center justify-between gap-6 rounded-xl px-3 py-2 transition hover:bg-orange-950/40"
               >
-                <div className="flex gap-4 items-center flex-1">
-                  <div className="min-w-[1rem] text-right relative">
-                    <div className="group-hover:invisible text-neutral-400 visible">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative min-w-[1rem] text-right">
+                    <div className="visible text-neutral-400 group-hover:invisible">
                       {i + 1}
                     </div>
                     <FaPlay
                       className={
-                        "group-hover:visible invisible absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2"
+                        "invisible absolute left-1/2 top-1/2 -translate-x-1/4 -translate-y-1/2 group-hover:visible"
                       }
                     />
                   </div>
                   <div className="flex  gap-2">
-                    <div className="space-y-1 flex-1">
+                    <div className="flex-1 space-y-1">
                       <Link
                         href={`/track/${id}`}
                         className="line-clamp-1 hover:underline"
@@ -122,7 +122,7 @@ const AlbumPlaylistSongs = ({ data }: any) => {
                         {artists.map((artist: any, i: number) => {
                           return (
                             <Link key={artist.id} href={`/artist/${artist.id}`}>
-                              <span className="group-hover:text-white hover:underline">
+                              <span className="hover:underline group-hover:text-white">
                                 {artist.name +
                                   (i !== artists.length - 1 ? ", " : "")}
                               </span>
@@ -135,7 +135,7 @@ const AlbumPlaylistSongs = ({ data }: any) => {
                 </div>
                 <div
                   className={
-                    "flex justify-between text-center  text-neutral-400 text-sm"
+                    "flex justify-between text-center  text-sm text-neutral-400"
                   }
                 >
                   <div className="w-7">{duration(duration_ms)}</div>

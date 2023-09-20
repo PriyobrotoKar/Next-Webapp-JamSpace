@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <NextAuthProvider>
-        <body className="font-Poppins min-h-[100svh]">
+        <body className="min-h-[100svh] font-Poppins">
           <Toaster position="top-center" />
           {children}
         </body>
