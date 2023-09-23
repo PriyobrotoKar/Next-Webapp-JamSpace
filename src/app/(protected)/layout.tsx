@@ -22,18 +22,16 @@ export default function RootLayout({
 }) {
   return (
     <NextAuthProvider>
-      <section className="min-h-[100svh] bg-gradient-to-b from-orange-900/25 to-40% font-Poppins">
-        <main className="mx-auto flex h-[100svh] max-w-[2000px] justify-between gap-0 lg:gap-6">
-          <SidebarLeft />
-          <section className="flex flex-1 flex-col overflow-y-auto 2xl:flex-[3_2_0%] ">
-            <Navbar />
-            {children}
-            <Footer />
-          </section>
+      <main className="mx-auto flex  max-w-[2000px] justify-between gap-0 lg:gap-6">
+        <SidebarLeft />
+        <section className="flex flex-1 flex-col  2xl:flex-[3_2_0%] ">
+          <Navbar />
+          {children}
+          <Footer />
+        </section>
 
-          <SidebarRight />
-        </main>
-      </section>
+        <SidebarRight />
+      </main>
     </NextAuthProvider>
   );
 }
