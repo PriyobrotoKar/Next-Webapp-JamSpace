@@ -9,13 +9,7 @@ import Link from "next/link";
 import { FaPlay } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
 
-export function ArtistBanner({
-  name,
-  images,
-}: {
-  name: string;
-  images: any[];
-}) {
+function ArtistBanner({ name, images }: { name: string; images: any[] }) {
   return (
     <div className="flex items-end gap-10">
       <div>
@@ -48,7 +42,7 @@ export function ArtistBanner({
   );
 }
 
-export function Overview({ topTracks, followers, genres, popularity }: any) {
+function Overview({ topTracks, followers, genres, popularity }: any) {
   return (
     <div className="flex gap-10 md:flex-col 2xl:flex-row">
       <div className="flex-1 space-y-4">
@@ -103,7 +97,7 @@ export function Overview({ topTracks, followers, genres, popularity }: any) {
   );
 }
 
-export function SimilarArtist({ artists }: { artists: any[] }) {
+function SimilarArtist({ artists }: { artists: any[] }) {
   return (
     <div className="space-y-4">
       <h2 className=" text-lg font-medium uppercase tracking-wide">
