@@ -79,7 +79,7 @@ export function Overview({ topTracks, followers, genres, popularity }: any) {
             {genres.map((genre: string, i: number) => {
               if (i > 2) return;
               return (
-                <div className="text-2xl font-semibold">
+                <div key={genre} className="text-2xl font-semibold">
                   {genre[0].toUpperCase() + genre.slice(1)}
                   {i !== genres.length - 1 ? ", " : ""}
                 </div>
@@ -114,6 +114,7 @@ export function SimilarArtist({ artists }: { artists: any[] }) {
           if (i > 3) return;
           return (
             <Link
+              key={artist.id}
               href={`/artist/${artist.id}`}
               className="group relative space-y-4 rounded-xl p-4 hover:bg-orange-950/40 "
             >
