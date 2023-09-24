@@ -50,7 +50,7 @@ export function ArtistBanner({
 
 export function Overview({ topTracks, followers, genres, popularity }: any) {
   return (
-    <div className="flex gap-10">
+    <div className="flex gap-10 md:flex-col 2xl:flex-row">
       <div className="flex-1 space-y-4">
         <h2 className="px-3 text-lg font-medium tracking-wide">POPULAR</h2>
         <div>
@@ -64,7 +64,7 @@ export function Overview({ topTracks, followers, genres, popularity }: any) {
                 <div className="text-sm group-hover:text-orange-500">
                   <FaPlay />
                 </div>
-                <div className="flex-1">{track.name}</div>
+                <div className="line-clamp-1 flex-1">{track.name}</div>
                 <div className="text-sm text-neutral-400">
                   {duration(track.duration_ms)}
                 </div>
@@ -73,8 +73,8 @@ export function Overview({ topTracks, followers, genres, popularity }: any) {
           })}
         </div>
       </div>
-      <div className="grid flex-1 auto-rows-fr grid-cols-2 grid-rows-2 gap-6">
-        <div className="row-span-2 flex flex-col items-center justify-center gap-6 rounded-xl bg-neutral-950 p-10">
+      <div className="grid flex-1 auto-rows-fr grid-cols-2 grid-rows-2 gap-6 p-10 2xl:p-0">
+        <div className="row-span-2 flex flex-col items-center justify-center gap-6 rounded-xl bg-neutral-950 p-10 ">
           <div className="line-clamp-5">
             {genres.map((genre: string, i: number) => {
               if (i > 2) return;
@@ -90,7 +90,9 @@ export function Overview({ topTracks, followers, genres, popularity }: any) {
         </div>
         <div className="row-span-1 flex flex-col items-center justify-center rounded-xl bg-neutral-950 p-3 ">
           <div className="text-2xl font-semibold">{format(followers)}</div>
-          <div className="text-neutral-400">Monthly Active Listeners</div>
+          <div className="text-center text-neutral-400">
+            Monthly Active Listeners
+          </div>
         </div>
         <div className="flex flex-col items-center justify-center rounded-xl bg-neutral-950 p-3 ">
           <div className="text-2xl font-semibold">{popularity}</div>
@@ -107,14 +109,17 @@ export function SimilarArtist({ artists }: { artists: any[] }) {
       <h2 className=" text-lg font-medium uppercase tracking-wide">
         Fans also like
       </h2>
-      <div className="grid grid-cols-4 gap-10 text-center">
+      <div className="grid grid-cols-4 text-center md:gap-4 2xl:gap-10">
         {artists.map((artist, i) => {
           if (i > 3) return;
           return (
-            <Link href={`/artist/${artist.id}`} className="space-y-4">
+            <Link
+              href={`/artist/${artist.id}`}
+              className="group relative space-y-4 rounded-xl p-4 hover:bg-orange-950/40 "
+            >
               <div>
                 <Image
-                  className="aspect-square w-full rounded-full object-cover"
+                  className="aspect-square w-full rounded-full object-cover group-hover:shadow-2xl"
                   src={artist.images[0].url}
                   alt=""
                   width={200}
@@ -125,6 +130,13 @@ export function SimilarArtist({ artists }: { artists: any[] }) {
                 <div className="font-semibold">{artist.name}</div>
                 <div className="text-sm text-neutral-400">Artist</div>
               </div>
+              <Button
+                size={"sm"}
+                className="absolute bottom-[20%] left-1/2 -translate-x-1/2 space-x-2 px-4 text-lg text-white opacity-0  transition-all duration-300 group-hover:bottom-1/4 group-hover:opacity-100"
+              >
+                <FaPlay />
+                <div>PLAY</div>
+              </Button>
             </Link>
           );
         })}

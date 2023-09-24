@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "./ui/button";
+import { FaPlay } from "react-icons/fa6";
 
 export function Discography({
   albums,
@@ -47,14 +49,14 @@ export function Discography({
         </button>
       </div>
 
-      <div className="grid grid-cols-4 grid-rows-1 gap-12">
+      <div className="grid grid-cols-4 grid-rows-1 md:gap-4 2xl:gap-12 ">
         {items.map((item, i) => {
           return (
-            <Link href={`/album/${item.id}`}>
-              <div className="space-y-4">
+            <Link key={item.id} href={`/album/${item.id}`}>
+              <div className="group relative space-y-4 rounded-xl p-4 hover:bg-orange-950/40">
                 <div>
                   <Image
-                    className="w-full rounded-xl"
+                    className="w-full rounded-xl transition-shadow group-hover:shadow-2xl"
                     src={item.images[0].url}
                     alt=""
                     width={200}
@@ -69,6 +71,13 @@ export function Discography({
                       : item.release_date.split("-")[0]}
                   </div>
                 </div>
+                <Button
+                  size={"sm"}
+                  className="absolute bottom-[20%] left-1/2 -translate-x-1/2 space-x-2 px-4 text-lg text-white opacity-0  transition-all duration-300 group-hover:bottom-1/4 group-hover:opacity-100"
+                >
+                  <FaPlay />
+                  <div>PLAY</div>
+                </Button>
               </div>
             </Link>
           );
