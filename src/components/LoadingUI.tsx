@@ -1,7 +1,4 @@
 import React from "react";
-import NavLinks from "./NavLinks";
-import { FiSearch } from "react-icons/fi";
-import { Input } from "./ui/input";
 
 export const LoadingLib = () => {
   return (

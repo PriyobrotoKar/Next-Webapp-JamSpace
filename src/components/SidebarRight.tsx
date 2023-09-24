@@ -5,7 +5,7 @@ import ProfileBtn from "./ProfileBtn";
 
 const SidebarRight = () => {
   return (
-    <div className="hidden space-y-8 px-6 pt-6 lg:block lg:w-[20rem] xl:w-[22rem] 2xl:flex-1">
+    <div className="sticky top-0 hidden h-full space-y-8 px-6 pt-6 lg:block lg:w-[20rem] xl:w-[22rem] 2xl:flex-1">
       <ProfileBtn />
       <AboutArtist />
       <SideQueue />
