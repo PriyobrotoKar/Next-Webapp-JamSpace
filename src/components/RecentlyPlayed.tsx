@@ -12,7 +12,6 @@ const RecentlyPlayed = async () => {
   const data = await fetchApi(
     "me/player/recently-played",
     session!.accessToken,
-    { limit: 5 },
   );
   return (
     <div>
@@ -42,6 +41,8 @@ const RecentlyPlayed = async () => {
         <div className="space-y-2 md:flex-[2_2_0%] xl:flex-[3_3_0%]">
           {data?.items.map((item: any, i: number) => {
             if (i === 0) return;
+            if (i > 4) return;
+            if (data?.items[i - 1].track.id === item.track.id) return;
             return (
               <div
                 key={item.track.id}
