@@ -1,4 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import ArtistCard from "@/components/ArtistCard";
 import Discography from "@/components/Discography";
 import { Button } from "@/components/ui/button";
 import fetchApi from "@/lib/fetchApi";
@@ -103,39 +104,7 @@ function SimilarArtist({ artists }: { artists: any[] }) {
       <h2 className=" text-lg font-medium uppercase tracking-wide">
         Fans also like
       </h2>
-      <div className="grid grid-cols-4 text-center md:gap-4 2xl:gap-10">
-        {artists.map((artist, i) => {
-          if (i > 3) return;
-          return (
-            <Link
-              key={artist.id}
-              href={`/artist/${artist.id}`}
-              className="group relative space-y-4 rounded-xl p-4 hover:bg-orange-950/40 "
-            >
-              <div>
-                <Image
-                  className="aspect-square w-full rounded-full object-cover group-hover:shadow-2xl"
-                  src={artist.images[0].url}
-                  alt=""
-                  width={200}
-                  height={200}
-                />
-              </div>
-              <div>
-                <div className="font-semibold">{artist.name}</div>
-                <div className="text-sm text-neutral-400">Artist</div>
-              </div>
-              <Button
-                size={"sm"}
-                className="absolute bottom-[20%] left-1/2 -translate-x-1/2 space-x-2 px-4 text-lg text-white opacity-0  transition-all duration-300 group-hover:bottom-1/4 group-hover:opacity-100"
-              >
-                <FaPlay />
-                <div>PLAY</div>
-              </Button>
-            </Link>
-          );
-        })}
-      </div>
+      <ArtistCard artists={artists} />
     </div>
   );
 }
