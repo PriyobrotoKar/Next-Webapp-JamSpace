@@ -5,7 +5,7 @@ const BASE_URL = "https://api.spotify.com/v1/";
 
 export const fetchDataFromApi = async (
   url: string,
-  token: string,
+  token?: string,
   params?: { [key: string]: string | number },
 ) => {
   if (!url) {
