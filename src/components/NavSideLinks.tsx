@@ -18,7 +18,7 @@ const NavSideLinks = () => {
         </Link>
         <Link
           className="flex items-center gap-3   rounded-xl p-3 transition-colors hover:bg-neutral-900"
-          href={"/new"}
+          href={"/newrelease"}
         >
           <AiFillFire className={"text-2xl"} />
           <div className="md:hidden xl:block">New Release</div>
