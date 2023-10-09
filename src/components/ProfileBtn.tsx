@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { twJoin } from "tailwind-merge";
+import Link from "next/link";
 
 const ProfileBtn = () => {
   const { data } = useSession();
@@ -34,7 +35,7 @@ const ProfileBtn = () => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="rounded-[10px]">
-            Account
+            <Link href={`/user/${data?.providerAccountId}`}>Account</Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="rounded-[10px]">
             Profile

@@ -4,8 +4,21 @@ import { FaPlay } from "react-icons/fa6";
 import { format } from "@/lib/utils";
 import Image from "next/image";
 import { BsCheckLg } from "react-icons/bs";
+import fetchApi from "@/lib/fetchApi";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 
-const AlbumPlaylistBanner = ({ data, user, isFollowed }: any) => {
+const AlbumPlaylistBanner = async ({ data, user }: any) => {
+  const session = await getServerSession(authOptions);
+  const [isFollowed] =
+    data.type === "playlist"
+      ? await fetchApi(
+          `playlists/${data.id}/followers/contains`,
+          session!.accessToken,
+          { ids: session!.providerAccountId },
+        )
+      : [false];
+
   const likesOrDate = (): string => {
     const result =
       data.type === "playlist"

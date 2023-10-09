@@ -8,6 +8,7 @@ const AlbumCard = ({ items }: { items: any[] }) => {
   return (
     <div className="grid grid-cols-4 grid-rows-1 md:gap-4 2xl:gap-12 ">
       {items.map((item, i) => {
+        if (!item) return;
         return (
           <Link key={item.id} href={`/${item.type}/${item.id}`}>
             <div className="group relative h-full space-y-4 rounded-xl p-4 hover:bg-orange-950/40">

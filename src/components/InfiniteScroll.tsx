@@ -22,6 +22,7 @@ const InfiniteScroll = ({ data, url, session }: any) => {
     const data = await fetchDataFromApi(url, session?.accessToken!, {
       offset: offsetvalue,
     });
+
     setAlbumData((prev: any[]) => [
       ...prev,
       ...(data.albums?.items || data.playlists.items),
