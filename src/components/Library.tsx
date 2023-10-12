@@ -21,7 +21,7 @@ const Library = async () => {
       return album;
     });
 
-    items = [...playlist.items, ...albumsNew];
+    items = playlist.items.concat(albumsNew);
     items.sort((a, b) => {
       // a should come before b in the sorted order
       if (a.name < b.name) {

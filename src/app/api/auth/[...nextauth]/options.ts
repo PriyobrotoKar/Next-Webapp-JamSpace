@@ -11,6 +11,7 @@ const scopes = [
   "user-read-recently-played",
   "user-modify-playback-state",
   "user-follow-read",
+  "user-top-read",
   "user-library-read",
 ].join(",");
 
@@ -66,7 +67,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  
+
   callbacks: {
     async jwt({ token, account }: any) {
       // Persist the OAuth access_token and or the user id to the token right after signin
