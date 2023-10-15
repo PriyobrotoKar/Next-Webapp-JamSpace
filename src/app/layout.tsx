@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <NextAuthProvider>
-        <body className=" bg-gradient-to-b from-orange-900/25 to-[30rem]  font-Poppins">
+        <body className="relative bg-gradient-to-b from-orange-900/25 to-[30rem]  font-Poppins">
           <Toaster position="top-center" />
           {children}
         </body>

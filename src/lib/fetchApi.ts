@@ -13,6 +13,6 @@ const fetchApi = async (url: string, token: string, params?: any) => {
       },
     },
   );
-  return await response.json();
+  return response.status === 200 ? await response.json() : null;
 };
 export default fetchApi;
