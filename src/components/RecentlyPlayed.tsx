@@ -12,6 +12,7 @@ const RecentlyPlayed = async () => {
   const data = await fetchApi(
     "me/player/recently-played",
     session!.accessToken,
+    { limit: 50 },
   );
   return (
     <div>
