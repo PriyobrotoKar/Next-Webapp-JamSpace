@@ -1,6 +1,10 @@
 "use client";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import useFetch, { fetchDataFromApi, putDataFromApi } from "@/hooks/useFetch";
+import useFetch, {
+  fetchDataFromApi,
+  postDataFromApi,
+  putDataFromApi,
+} from "@/hooks/useFetch";
 import fetchApi from "@/lib/fetchApi";
 import { duration } from "@/lib/utils";
 import {
@@ -19,10 +23,12 @@ import { HiPause } from "react-icons/hi2";
 import { MdShuffle } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Slider } from "./ui/slider";
+import { updateUserQueue } from "@/reducer/userQueue/userQueueSlice";
 
 const Player = () => {
   const { data: session } = useSession();
   const song = useSelector((state: RootState) => state.currPlayingSong.song);
+  const queue = useSelector((state: RootState) => state.userQueue.queue);
   const isPlaying = useSelector(
     (state: RootState) => state.currPlayingSong.isPlaying,
   );
@@ -82,6 +88,31 @@ const Player = () => {
     }
   }, [songProgressDuration]);
 
+  function debounce(func: (...args: any) => void, delay = 1000) {
+    let timeout: string | number | NodeJS.Timeout | undefined;
+
+    return (...args: any) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  }
+  const debouncedSeekPosition = useCallback(
+    debounce(async (i) => {
+      try {
+        await putDataFromApi(
+          `me/player/seek?position_ms=${Number(i) + 1000}`,
+          {},
+          session?.accessToken,
+        );
+      } catch (error: any) {
+        console.error(error.message);
+      }
+    }, 800),
+    [session],
+  );
+
   const handlePlayPause = async () => {
     dispatch(updatePlayingState(!isPlaying));
     if (isPlaying) {
@@ -106,35 +137,31 @@ const Player = () => {
     }
   };
 
-  function debounce(func: (...args: any) => void, delay = 1000) {
-    let timeout: string | number | NodeJS.Timeout | undefined;
-
-    return (...args: any) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        func(...args);
-      }, delay);
-    };
-  }
-
-  const debouncedSeekPosition = useCallback(
-    debounce(async (i) => {
-      try {
-        await putDataFromApi(
-          `me/player/seek?position_ms=${Number(i) + 1000}`,
-          {},
-          session?.accessToken,
-        );
-      } catch (error: any) {
-        console.error(error.message);
-      }
-    }, 800),
-    [session],
-  );
-
   const handleSeeking = (i: number[]) => {
     debouncedSeekPosition(i);
     setSongProgressDuration(Number(i));
+  };
+
+  const handleNext = async () => {
+    try {
+      if (session) {
+        await postDataFromApi("me/player/next", {}, session?.accessToken);
+        dispatch(updateCurrSong({ track: queue[0] }));
+        dispatch(updateUserQueue(queue.slice(1)));
+      }
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  };
+
+  const handlePrevious = async () => {
+    try {
+      if (session) {
+        await postDataFromApi("me/player/previous", {}, session?.accessToken);
+      }
+    } catch (error: any) {
+      console.error(error.message);
+    }
   };
 
   return (
@@ -186,7 +213,10 @@ const Player = () => {
             <div className="rounded-full p-2 text-xl  hover:bg-neutral-400/20">
               <MdShuffle />
             </div>
-            <div className="rounded-full p-2  hover:bg-neutral-400/20">
+            <div
+              onClick={handlePrevious}
+              className="rounded-full p-2  hover:bg-neutral-400/20"
+            >
               <BiSkipPrevious />
             </div>
             <button
@@ -199,9 +229,12 @@ const Player = () => {
                 <FaPlay className="relative left-[0.05rem] text-base" />
               )}
             </button>
-            <div className="rounded-full p-2  hover:bg-neutral-400/20">
+            <button
+              onClick={handleNext}
+              className="rounded-full p-2  hover:bg-neutral-400/20"
+            >
               <BiSkipNext />
-            </div>
+            </button>
             <div className="rounded-full p-2 text-lg  hover:bg-neutral-400/20">
               <BsRepeat />
             </div>

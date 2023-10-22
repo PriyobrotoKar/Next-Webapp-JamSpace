@@ -4,7 +4,7 @@ import React from "react";
 import { LuClock3 } from "react-icons/lu";
 import { FaPlay } from "react-icons/fa6";
 import Link from "next/link";
-import Song from "./Song";
+import { SongLarge } from "./Song";
 
 const AlbumPlaylistSongs = ({ data }: any) => {
   return (
@@ -29,7 +29,7 @@ const AlbumPlaylistSongs = ({ data }: any) => {
       <div className="mt-4 space-y-2">
         {data.tracks.items.map((item: any, i: number) => {
           if (data.type === "playlist") {
-            return <Song key={item.id} item={item} i={i} />;
+            return <SongLarge key={item.id} item={item} i={i} />;
           } else {
             const { name, artists, duration_ms, id } = item;
             return (

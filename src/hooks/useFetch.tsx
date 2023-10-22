@@ -39,6 +39,23 @@ export const putDataFromApi = async (
   });
   return response.data;
 };
+export const postDataFromApi = async (
+  url: string,
+  body?: { [key: string]: string[] | number | { [key: string]: number } },
+  token?: string,
+) => {
+  if (!url) {
+    const response = new Promise((resolve) => resolve(null));
+    return response;
+  }
+  const response = await axios.post(BASE_URL + url, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Accept-Language": "en",
+    },
+  });
+  return response.data;
+};
 
 const useFetch = (
   url: string,
