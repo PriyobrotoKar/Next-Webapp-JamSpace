@@ -27,7 +27,7 @@ export function format(number: number): string {
 }
 
 export function duration(duration: number): string {
-  return `${(duration / 60000).toFixed(0)}:${
+  return `${Math.trunc(duration / 60000)}:${
     Math.floor((duration / 1000) % 60) < 10
       ? 0 + Math.floor((duration / 1000) % 60).toString()
       : Math.floor((duration / 1000) % 60)
