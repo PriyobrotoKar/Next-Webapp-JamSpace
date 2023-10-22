@@ -87,7 +87,6 @@ export const SongMedium = ({ item }: { item: any }) => {
   return (
     <div
       onClick={() => playSong(uri, session, { track: item }, item, dispatch)}
-      key={id}
       className="group flex justify-between gap-4 rounded-[12px] p-3 transition-colors hover:bg-orange-950/30"
     >
       <div className="flex group-hover:gap-4">

@@ -114,7 +114,7 @@ const Songs = ({ searchResult }: any) => {
       <h2 className="text-xl font-semibold">Songs</h2>
       <div>
         {tracks.items.map((track: any, i: number) => {
-          return <SongMedium item={track} />;
+          return <SongMedium key={track.id} item={track} />;
         })}
       </div>
     </div>
