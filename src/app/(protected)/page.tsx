@@ -4,7 +4,7 @@ import RecentlyPlayed from "@/components/RecentlyPlayed";
 export default function Home() {
   return (
     <>
-      <section className="space-y-8 pr-6 lg:pr-0 ">
+      <section className="space-y-8 overflow-x-hidden md:pr-6 lg:pr-0 ">
         <HomeBanner />
         <RecentlyPlayed />
       </section>

@@ -55,6 +55,7 @@ const Player = () => {
   useEffect(() => {
     if (song) {
       setSongProgressDuration(song.progress_ms);
+      setTotalDuration(song.duration_ms);
     }
   }, [song]);
 
@@ -165,10 +166,10 @@ const Player = () => {
   };
 
   return (
-    <div className="fixed bottom-10 left-1/2 z-10 w-3/4 -translate-x-1/2  ">
+    <div className="fixed bottom-16 left-1/2 z-10 w-[95%] -translate-x-1/2 md:bottom-10 md:w-3/4  ">
       <Image
         className={
-          "absolute bottom-3 left-10 -z-10  rounded-full " +
+          "absolute bottom-3 left-4 -z-10 w-20 rounded-full  md:left-10 md:w-24 " +
           (!song ? "hidden" : "block")
         }
         src={song ? song.album.images[0].url : ""}
@@ -177,10 +178,10 @@ const Player = () => {
         height={100}
         quality={60}
       />
-      <div className="flex items-center justify-between rounded-lg  bg-neutral-900/50 px-10 backdrop-blur-2xl ">
+      <div className="relative flex h-20 items-center justify-between rounded-lg bg-neutral-900/50  px-4 backdrop-blur-2xl md:h-24 md:px-10 ">
         {/* Song Info */}
         <div className="flex flex-1 items-center gap-4">
-          <div className="h-24 flex-[0_0_auto]">
+          <div className="w-20 flex-[0_0_auto] md:w-24">
             <Image
               className={
                 "relative bottom-4  rounded-full " +
@@ -193,7 +194,9 @@ const Player = () => {
             />
           </div>
           <div>
-            <div className="line-clamp-1 text-xl">{song ? song.name : ""}</div>
+            <div className="line-clamp-1 md:text-xl">
+              {song ? song.name : ""}
+            </div>
             <div className="line-clamp-1">
               {song &&
                 song.artists.map((artist: any, i: number, arr: any[]) => {
@@ -208,14 +211,14 @@ const Player = () => {
           </div>
         </div>
         {/*Controls */}
-        <div className="flex-[2_2_0%] space-y-2">
+        <div className="md:flex-[2_2_0%] md:space-y-2">
           <div className="flex items-center justify-center gap-4 text-2xl">
-            <div className="rounded-full p-2 text-xl  hover:bg-neutral-400/20">
+            <div className="hidden rounded-full p-2 text-xl hover:bg-neutral-400/20  md:block">
               <MdShuffle />
             </div>
             <div
               onClick={handlePrevious}
-              className="rounded-full p-2  hover:bg-neutral-400/20"
+              className="hidden rounded-full p-2 hover:bg-neutral-400/20  md:block"
             >
               <BiSkipPrevious />
             </div>
@@ -231,19 +234,20 @@ const Player = () => {
             </button>
             <button
               onClick={handleNext}
-              className="rounded-full p-2  hover:bg-neutral-400/20"
+              className="hidden rounded-full p-2 hover:bg-neutral-400/20  md:block"
             >
               <BiSkipNext />
             </button>
-            <div className="rounded-full p-2 text-lg  hover:bg-neutral-400/20">
+            <div className="hidden rounded-full p-2 text-lg hover:bg-neutral-400/20  md:block">
               <BsRepeat />
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-8 text-right text-xs text-neutral-300">
+          <div className="flex items-center justify-center gap-2">
+            <div className="hidden w-8 text-right text-xs text-neutral-300 md:block">
               {duration(songProgressDuration)}
             </div>
             <Slider
+              className="absolute bottom-0 left-1/2 w-72 -translate-x-1/2 md:relative md:left-0 md:w-full md:translate-x-0"
               defaultValue={[0]}
               value={[songProgressDuration]}
               onValueChange={handleSeeking}
@@ -251,13 +255,13 @@ const Player = () => {
               step={1000}
             />
 
-            <div className="w-8 text-xs text-neutral-300">
+            <div className="hidden w-8 text-xs text-neutral-300 md:block">
               {duration(song && totalDuration)}
             </div>
           </div>
         </div>
         {/*Volume Slider */}
-        <div className="group flex flex-1 items-center justify-end gap-2">
+        <div className="group hidden flex-1 items-center justify-end gap-2  md:flex">
           <div className="text-xl transition-all group-hover:scale-110">
             <BsFillVolumeDownFill />
           </div>

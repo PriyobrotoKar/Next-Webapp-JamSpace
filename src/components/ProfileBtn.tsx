@@ -15,22 +15,26 @@ import Link from "next/link";
 const ProfileBtn = () => {
   const { data } = useSession();
   return (
-    <div
-      className={twJoin(
-        "ml-auto flex min-w-[10rem] max-w-fit items-center gap-4 rounded-full bg-orange-600/10 pr-8 transition-colors hover:bg-orange-600/20",
-        !data && "animate-pulse",
-      )}
-    >
-      <Avatar>
-        <AvatarImage src={data?.user?.image || ""} />
-        <AvatarFallback>
-          <div className="text-center text-[1.1rem]  font-medium ">
-            {data?.user?.name?.at(0)?.toUpperCase()}
-          </div>
-        </AvatarFallback>
-      </Avatar>
+    <div className="flex justify-end">
       <DropdownMenu>
-        <DropdownMenuTrigger>{data?.user?.name}</DropdownMenuTrigger>
+        <DropdownMenuTrigger>
+          <div
+            className={twJoin(
+              " flex max-w-fit items-center gap-4 rounded-full bg-orange-600/10 transition-colors hover:bg-orange-600/20 md:min-w-[10rem] md:pr-8",
+              !data && "animate-pulse",
+            )}
+          >
+            <Avatar>
+              <AvatarImage src={data?.user?.image || ""} />
+              <AvatarFallback>
+                <div className=" text-center text-[1.1rem]  font-medium ">
+                  {data?.user?.name?.at(0)?.toUpperCase()}
+                </div>
+              </AvatarFallback>
+            </Avatar>
+            <span className="hidden md:block">{data?.user?.name}</span>
+          </div>
+        </DropdownMenuTrigger>
         <DropdownMenuContent className="mt-2 origin-top rounded-[10px] border-none bg-[#150906bd] p-2  backdrop-blur-md">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />

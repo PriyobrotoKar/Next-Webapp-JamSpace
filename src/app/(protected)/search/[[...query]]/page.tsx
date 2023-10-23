@@ -12,6 +12,9 @@ import AlbumCard from "@/components/AlbumCard";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SongMedium } from "@/components/Song";
+import { FiSearch } from "react-icons/fi";
+import { Input } from "@/components/ui/input";
+import SearchBox from "@/components/SearchBox";
 
 const TopResult = ({ searchResult, query }: any) => {
   const { tracks, artists, albums, playlists } = searchResult;
@@ -61,10 +64,10 @@ const TopResult = ({ searchResult, query }: any) => {
     <div className="flex-1 space-y-6">
       <h2 className="text-xl font-semibold">Top Result</h2>
       <div>
-        <div className="group relative space-y-4 rounded-xl bg-orange-950/20 p-6 transition-all hover:bg-orange-950/30">
-          <div>
+        <div className="group relative flex flex-row items-center gap-4 rounded-xl bg-orange-950/20 p-6 transition-all hover:bg-orange-950/30 md:flex-col">
+          <div className="flex-initial">
             <Image
-              className="h-32 w-32 rounded-full object-cover object-center"
+              className="w-20 rounded-full object-cover object-center md:h-32 md:w-32"
               src={topResult.imageUrl}
               alt=""
               width={100}
@@ -72,27 +75,28 @@ const TopResult = ({ searchResult, query }: any) => {
             />
           </div>
 
-          <div className="text-3xl font-semibold">
-            <Link href={`/${topResult.type}/${topResult.id}`}>
-              {topResult.name}
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="w-fit rounded-full bg-neutral-800/30 px-4 py-2 text-sm">
-              {topResult.type[0].toUpperCase() + topResult.type.slice(1)}
+          <div className="flex-[2_2_0%] space-y-2">
+            <div className="line-clamp-2 text-2xl font-semibold md:text-3xl">
+              <Link href={`/${topResult.type}/${topResult.id}`}>
+                {topResult.name}
+              </Link>
             </div>
-            <div>
-              {topResult.artists?.map((artist, i, artists) => {
-                return (
-                  <Link href={`/artist/${artist.id}`} key={artist.id}>
-                    <span className="hover:underline">
-                      {artist.name + (i !== artists.length - 1 ? ", " : "")}
-                    </span>
-                  </Link>
-                );
-              })}
-              {topResult.owner && "by " + topResult.owner}
+            <div className="flex items-center gap-4">
+              <div className="w-fit rounded-full bg-neutral-800/30 px-4 py-2 text-sm">
+                {topResult.type[0].toUpperCase() + topResult.type.slice(1)}
+              </div>
+              <div className="line-clamp-1">
+                {topResult.artists?.map((artist, i, artists) => {
+                  return (
+                    <Link href={`/artist/${artist.id}`} key={artist.id}>
+                      <span className="hover:underline">
+                        {artist.name + (i !== artists.length - 1 ? ", " : "")}
+                      </span>
+                    </Link>
+                  );
+                })}
+                {topResult.owner && "by " + topResult.owner}
+              </div>
             </div>
           </div>
           <Button
@@ -123,7 +127,7 @@ const Songs = ({ searchResult }: any) => {
 
 const Artists = ({ searchResult }: any) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4">
       <h2 className="text-xl font-semibold">Artists</h2>
       <ArtistCard artists={searchResult.artists.items} />
     </div>
@@ -132,7 +136,7 @@ const Artists = ({ searchResult }: any) => {
 
 const Albums = ({ searchResult }: any) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4">
       <h2 className="text-xl font-semibold">Albums</h2>
       <AlbumCard items={searchResult.albums.items} />
     </div>
@@ -149,14 +153,21 @@ const page = async ({ params }: { params: { query: string } }) => {
   });
 
   return (
-    <div className="space-y-8">
-      <div className="flex gap-10">
-        <TopResult searchResult={searchResult} query={query} />
-        <Songs searchResult={searchResult} />
-      </div>
-      <Artists searchResult={searchResult} />
-      <Albums searchResult={searchResult} />
-    </div>
+    <>
+      {params.query ? (
+        <div className="space-y-8">
+          <SearchBox />
+          <div className="flex flex-col gap-10 px-4 md:flex-row">
+            <TopResult searchResult={searchResult} query={query} />
+            <Songs searchResult={searchResult} />
+          </div>
+          <Artists searchResult={searchResult} />
+          <Albums searchResult={searchResult} />
+        </div>
+      ) : (
+        <SearchBox />
+      )}
+    </>
   );
 };
 

@@ -24,7 +24,9 @@ export const fetchDataFromApi = async (
 };
 export const putDataFromApi = async (
   url: string,
-  body?: { [key: string]: string[] | number | { [key: string]: number } },
+  body?: {
+    [key: string]: string[] | string | number | { [key: string]: number };
+  },
   token?: string,
 ) => {
   if (!url) {

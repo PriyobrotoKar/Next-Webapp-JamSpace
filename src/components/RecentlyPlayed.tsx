@@ -15,7 +15,7 @@ const RecentlyPlayed = async () => {
     { limit: 50 },
   );
   return (
-    <div>
+    <div className="px-4">
       <h1 className="mb-6 text-xl font-semibold">Recently Played</h1>
       <div className="flex md:gap-4 xl:gap-10">
         <div className="flex-1 space-y-4">
@@ -39,7 +39,7 @@ const RecentlyPlayed = async () => {
             </p>
           </div>
         </div>
-        <div className="space-y-2 md:flex-[2_2_0%] xl:flex-[3_3_0%]">
+        <div className="flex-1   md:flex-[2_2_0%] md:space-y-2 xl:flex-[3_3_0%]">
           {data?.items.map((item: any, i: number) => {
             if (i === 0) return;
             if (i > 4) return;
@@ -78,7 +78,7 @@ const RecentlyPlayed = async () => {
                     </div>
                   </div>
                 </div>
-                <div className="self-center text-sm text-neutral-400">
+                <div className="hidden self-center text-sm text-neutral-400 md:block">
                   {duration(item.track.duration_ms)}
                 </div>
               </div>
