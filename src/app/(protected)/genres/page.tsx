@@ -13,9 +13,9 @@ const page = async () => {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4">
       <h1 className="mt-6 font-semibold fluid-4xl">Genres</h1>
-      <div className=" grid grid-cols-4 grid-rows-1 md:gap-4 2xl:gap-12 ">
+      <div className=" grid grid-cols-2 grid-rows-1  gap-4 md:grid-cols-4 2xl:gap-12 ">
         {categories.items.map((category: any, i: number) => {
           if (i === 0) return;
           return (

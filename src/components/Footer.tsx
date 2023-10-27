@@ -5,7 +5,7 @@ import { BiLogoLinkedinSquare } from "react-icons/bi";
 
 const Footer = () => {
   return (
-    <footer className=" mt-6 space-y-2 border-t border-neutral-800 px-4 py-12 text-neutral-400">
+    <footer className="mt-auto space-y-2 border-t border-neutral-800 px-4 py-12 text-neutral-400">
       <div className="flex justify-between">
         <div>
           <Link

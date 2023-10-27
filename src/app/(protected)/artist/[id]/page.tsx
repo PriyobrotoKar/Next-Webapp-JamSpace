@@ -12,8 +12,8 @@ import { MdVerified } from "react-icons/md";
 
 function ArtistBanner({ name, images }: { name: string; images: any[] }) {
   return (
-    <div className="flex items-end gap-10">
-      <div>
+    <div className="flex flex-col gap-10 md:flex-row md:items-end">
+      <div className="self-center">
         <Image
           className="h-52 w-52 rounded-full object-cover "
           src={images[0].url}
@@ -45,7 +45,7 @@ function ArtistBanner({ name, images }: { name: string; images: any[] }) {
 
 function Overview({ topTracks, followers, genres, popularity }: any) {
   return (
-    <div className="flex gap-10 md:flex-col 2xl:flex-row">
+    <div className="flex flex-col gap-10 2xl:flex-row">
       <div className="flex-1 space-y-4">
         <h2 className="px-3 text-lg font-medium tracking-wide">POPULAR</h2>
         <div>
@@ -68,7 +68,7 @@ function Overview({ topTracks, followers, genres, popularity }: any) {
           })}
         </div>
       </div>
-      <div className="grid flex-1 auto-rows-fr grid-cols-2 grid-rows-2 gap-6 p-10 2xl:p-0">
+      <div className="grid flex-1 auto-rows-fr grid-cols-2 grid-rows-2 gap-4  md:gap-6 md:p-10 2xl:p-0">
         <div className="row-span-2 flex flex-col items-center justify-center gap-6 rounded-xl bg-neutral-950 p-10 ">
           <div className="line-clamp-5">
             {genres.map((genre: string, i: number) => {
@@ -138,7 +138,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   } = artist;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 px-4">
       <ArtistBanner name={name} images={images} />
       <Overview
         topTracks={topTracks}

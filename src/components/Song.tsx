@@ -1,6 +1,6 @@
 "use client";
 
-import { playSong } from "@/lib/helperActions";
+import { playSong } from "@/lib/playSong";
 import { dateAdded, duration } from "@/lib/utils";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -65,14 +65,14 @@ export const SongLarge = ({ item, i }: { item: any; i: number }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-1 justify-between text-center text-sm text-neutral-400">
+      <div className="flex justify-end text-center text-sm text-neutral-400 md:flex-1 md:justify-between">
         <Link
           href={`/album/${album.id}`}
-          className="line-clamp-1 flex-1 text-left hover:underline group-hover:text-white"
+          className="line-clamp-1 hidden flex-1 text-left hover:underline group-hover:text-white md:block"
         >
           {album.name}
         </Link>
-        <div className="flex-1">{dateAdded(added_at)}</div>
+        <div className="hidden flex-1 md:block">{dateAdded(added_at)}</div>
         <div className="w-7">{duration(duration_ms)}</div>
       </div>
     </div>

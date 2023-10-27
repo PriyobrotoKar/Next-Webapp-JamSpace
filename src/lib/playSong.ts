@@ -29,3 +29,27 @@ export const playSong = async (
     console.error(error.message);
   }
 };
+
+export const playSongs = async (
+  context: string,
+  firstSong: any,
+  queue: any[],
+  session: Session | null,
+  dispatch: Dispatch<AnyAction>,
+) => {
+  try {
+    await putDataFromApi(
+      "me/player/play",
+      {
+        context_uri: context,
+        position_ms: 0,
+      },
+      session?.accessToken,
+    );
+    dispatch(updateCurrSong(firstSong));
+    dispatch(updateUserQueue(queue));
+    dispatch(updatePlayingState(true));
+  } catch (error: any) {
+    console.error(error.message);
+  }
+};

@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Player from "@/components/Player";
 import ReduxProvider from "@/Providers/ReduxProvider";
+import BottomNav from "@/components/BottomNav";
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +27,8 @@ export default function RootLayout({
     <NextAuthProvider>
       <ReduxProvider>
         <Player />
-        <main className="mx-auto flex  max-w-[2000px] justify-between gap-0 lg:gap-6">
+        <BottomNav />
+        <main className="mx-auto flex min-h-screen max-w-[2000px] justify-between gap-0 lg:gap-6">
           <SidebarLeft />
           <section className="flex flex-1 flex-col  2xl:flex-[3_2_0%] ">
             <Navbar />

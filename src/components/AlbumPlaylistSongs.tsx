@@ -15,13 +15,15 @@ const AlbumPlaylistSongs = ({ data }: any) => {
           <div>Title</div>
         </div>
         <div
-          className={`flex   items-center ${
+          className={`flex items-center justify-end ${
             data.type === "playlist" && "flex-1"
           }`}
         >
-          {data.type === "playlist" && <div className="flex-1">Album</div>}
           {data.type === "playlist" && (
-            <div className="flex-1 text-center">Date Added</div>
+            <div className="hidden flex-1 md:block">Album</div>
+          )}
+          {data.type === "playlist" && (
+            <div className="hidden flex-1 text-center md:block">Date Added</div>
           )}
           <LuClock3 className="w-7 text-center" />
         </div>
