@@ -55,8 +55,7 @@ const TopTracks = ({ topTracks }: any) => {
 
       <div>
         {topTracks.items.map((item: any, i: number) => {
-          const { album, name, artists, duration_ms, id } = item;
-          return <SongMedium item={item} />;
+          return <SongMedium key={item.id} item={item} />;
         })}
       </div>
     </div>
