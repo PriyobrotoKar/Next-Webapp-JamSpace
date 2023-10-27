@@ -31,7 +31,6 @@ const AlbumPlaylistBanner = async ({ data, user }: any) => {
 
     return result;
   };
-  console.log(data.uri);
   return (
     <>
       <div className="flex flex-col gap-10 md:flex-row">

@@ -5,6 +5,9 @@ import { playSongs } from "@/lib/playSong";
 import { Session } from "next-auth";
 import { FaPlay } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+import Link from "next/link";
+import { AiFillInfoCircle } from "react-icons/ai";
 
 const PlayAllSongsBtn = ({
   data,
@@ -34,9 +37,25 @@ const PlayAllSongsBtn = ({
 
   return (
     <Button
-      onClick={() =>
-        playSongs(data.uri, firstSong, allTracks, session, dispatch)
-      }
+      onClick={async () => {
+        try {
+          await playSongs(data.uri, firstSong, allTracks, session, dispatch);
+        } catch (error) {
+          toast(
+            (t) => (
+              <Link className="flex items-center gap-2" href={"/help"}>
+                Unable to play song <AiFillInfoCircle className={"text-xl"} />
+              </Link>
+            ),
+            {
+              style: {
+                background: "#eb4823",
+                color: "white",
+              },
+            },
+          );
+        }
+      }}
       className="space-x-2 p-6 text-xl text-white"
     >
       {children}

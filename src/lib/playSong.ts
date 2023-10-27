@@ -26,7 +26,7 @@ export const playSong = async (
     dispatch(updateUserQueue([queueItem]));
     dispatch(updatePlayingState(true));
   } catch (error: any) {
-    console.error(error.message);
+    throw new Error("Something went wrong!");
   }
 };
 
@@ -50,6 +50,6 @@ export const playSongs = async (
     dispatch(updateUserQueue(queue));
     dispatch(updatePlayingState(true));
   } catch (error: any) {
-    console.error(error.message);
+    throw new Error("Something went wrong!");
   }
 };

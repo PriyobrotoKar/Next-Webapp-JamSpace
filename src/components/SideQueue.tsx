@@ -8,6 +8,8 @@ import { LoadingLib } from "./LoadingUI";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { updateUserQueue } from "@/reducer/userQueue/userQueueSlice";
+import toast from "react-hot-toast";
+import { SideQueueErrorUI } from "./ErrorUI";
 
 const SideQueue = () => {
   const { data: session } = useSession();
@@ -26,7 +28,7 @@ const SideQueue = () => {
       setLoading(false);
       dispatch(updateUserQueue(data.queue));
     } catch (error: any) {
-      console.error(error.message);
+      toast.error("Something went wrong!");
     }
   };
 
@@ -36,7 +38,7 @@ const SideQueue = () => {
     }
   }, [session]);
   useEffect(() => {
-    if (!queue.length) {
+    if (!queue.length && song && session) {
       fetchQueue();
     }
   }, [queue]);
@@ -76,7 +78,7 @@ const SideQueue = () => {
           </Link>
         </>
       ) : (
-        <div>No song currently playing</div>
+        <SideQueueErrorUI />
       )}
     </div>
   );

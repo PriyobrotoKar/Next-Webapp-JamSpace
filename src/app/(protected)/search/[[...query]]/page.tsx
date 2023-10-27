@@ -64,7 +64,7 @@ const TopResult = ({ searchResult, query }: any) => {
     <div className="flex-1 space-y-6">
       <h2 className="text-xl font-semibold">Top Result</h2>
       <div>
-        <div className="group relative flex flex-row items-center gap-4 rounded-xl bg-orange-950/20 p-6 transition-all hover:bg-orange-950/30 md:flex-col">
+        <div className="group relative flex flex-row items-center gap-4 rounded-xl bg-orange-950/20 p-6 transition-all hover:bg-orange-950/30 md:flex-col md:items-start">
           <div className="flex-initial">
             <Image
               className="w-20 rounded-full object-cover object-center md:h-32 md:w-32"

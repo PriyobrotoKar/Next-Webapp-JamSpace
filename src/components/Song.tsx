@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import toast from "react-hot-toast";
+import { AiFillInfoCircle } from "react-icons/ai";
 import { FaPlay } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 
@@ -19,7 +21,25 @@ export const SongLarge = ({ item, i }: { item: any; i: number }) => {
 
   return (
     <div
-      onClick={() => playSong(uri, session, item, item.track, dispatch)}
+      onClick={async () => {
+        try {
+          await playSong(uri, session, item, item.track, dispatch);
+        } catch (error) {
+          toast(
+            (t) => (
+              <Link className="flex items-center gap-2" href={"/help"}>
+                Unable to play song <AiFillInfoCircle className={"text-xl"} />
+              </Link>
+            ),
+            {
+              style: {
+                background: "#eb4823",
+                color: "white",
+              },
+            },
+          );
+        }
+      }}
       key={id}
       className="group flex items-center justify-between gap-6 rounded-xl px-3 py-2 transition hover:bg-orange-950/40"
     >
@@ -86,7 +106,25 @@ export const SongMedium = ({ item }: { item: any }) => {
 
   return (
     <div
-      onClick={() => playSong(uri, session, { track: item }, item, dispatch)}
+      onClick={async () => {
+        try {
+          await playSong(uri, session, { track: item }, item, dispatch);
+        } catch (error) {
+          toast(
+            (t) => (
+              <Link className="flex items-center gap-2" href={"/help"}>
+                Unable to play song <AiFillInfoCircle className={"text-xl"} />
+              </Link>
+            ),
+            {
+              style: {
+                background: "#eb4823",
+                color: "white",
+              },
+            },
+          );
+        }
+      }}
       className="group flex justify-between gap-4 rounded-[12px] p-3 transition-colors hover:bg-orange-950/30"
     >
       <div className="flex group-hover:gap-4">
