@@ -73,7 +73,11 @@ const AlbumPlaylistBanner = async ({ data, user }: any) => {
             } songs`}</div>
           </div>
           <div className="playAll flex items-center">
-            <PlayAllSongsBtn data={data} session={session}>
+            <PlayAllSongsBtn
+              data={data}
+              session={session}
+              className={"space-x-2 p-6 text-xl text-white"}
+            >
               <FaPlay />
               <div>PLAY</div>
             </PlayAllSongsBtn>

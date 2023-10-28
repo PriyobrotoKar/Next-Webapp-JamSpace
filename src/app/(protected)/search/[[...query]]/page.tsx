@@ -99,12 +99,6 @@ const TopResult = ({ searchResult, query }: any) => {
               </div>
             </div>
           </div>
-          <Button
-            size={"sm"}
-            className="absolute bottom-[5%] right-0 -translate-x-1/2 space-x-2 rounded-full px-[1.30rem] py-8 text-center text-2xl text-white opacity-0  transition-all duration-300 focus:bottom-[10%] focus:opacity-100 group-hover:bottom-[10%] group-hover:opacity-100"
-          >
-            <FaPlay className={"translate-x-[0.1rem]"} />
-          </Button>
         </div>
       </div>
     </div>
@@ -134,11 +128,11 @@ const Artists = ({ searchResult }: any) => {
   );
 };
 
-const Albums = ({ searchResult }: any) => {
+const Albums = ({ searchResult, session }: any) => {
   return (
     <div className="space-y-6 px-4">
       <h2 className="text-xl font-semibold">Albums</h2>
-      <AlbumCard items={searchResult.albums.items} />
+      <AlbumCard items={searchResult.albums.items} session={session} />
     </div>
   );
 };
@@ -162,7 +156,7 @@ const page = async ({ params }: { params: { query: string } }) => {
             <Songs searchResult={searchResult} />
           </div>
           <Artists searchResult={searchResult} />
-          <Albums searchResult={searchResult} />
+          <Albums searchResult={searchResult} session={session} />
         </div>
       ) : (
         <SearchBox />

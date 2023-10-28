@@ -1,16 +1,29 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import ArtistCard from "@/components/ArtistCard";
 import Discography from "@/components/Discography";
+import PlayAllSongsBtn from "@/components/PlayAllSongsBtn";
 import { Button } from "@/components/ui/button";
 import fetchApi from "@/lib/fetchApi";
 import { duration, format } from "@/lib/utils";
-import { getServerSession } from "next-auth";
+import { Session, getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { FaPlay } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
 
-function ArtistBanner({ name, images }: { name: string; images: any[] }) {
+function ArtistBanner({
+  name,
+  images,
+  topTracks,
+  uri,
+  session,
+}: {
+  name: string;
+  images: any[];
+  uri: string;
+  topTracks: any;
+  session: Session | null;
+}) {
   return (
     <div className="flex flex-col gap-10 md:flex-row md:items-end">
       <div className="self-center">
@@ -30,10 +43,14 @@ function ArtistBanner({ name, images }: { name: string; images: any[] }) {
           {name}
         </div>
         <div className="flex">
-          <Button className="space-x-2 p-6 text-xl text-white">
+          <PlayAllSongsBtn
+            data={{ uri, type: "artist", tracks: { items: topTracks.tracks } }}
+            session={session}
+            className={"space-x-2 p-6 text-xl text-white"}
+          >
             <FaPlay />
             <div>PLAY</div>
-          </Button>
+          </PlayAllSongsBtn>
           <Button variant={"link"} className="space-x-2 p-6 text-xl text-white">
             Follow
           </Button>
@@ -134,12 +151,19 @@ const page = async ({ params }: { params: { id: string } }) => {
     genres,
     name,
     popularity,
+    uri,
     followers: { total },
   } = artist;
 
   return (
     <div className="space-y-10 px-4">
-      <ArtistBanner name={name} images={images} />
+      <ArtistBanner
+        name={name}
+        images={images}
+        uri={uri}
+        topTracks={topTracks}
+        session={session}
+      />
       <Overview
         topTracks={topTracks}
         followers={total}

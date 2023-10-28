@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import { FaPlay } from "react-icons/fa6";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiHeart } from "react-icons/fi";
+import PlayAllSongsBtn from "./PlayAllSongsBtn";
 
 const HomeBanner = async () => {
   const session = await getServerSession(authOptions);
@@ -21,6 +22,10 @@ const HomeBanner = async () => {
   );
 
   const featPlaylist = data.playlists.items[Math.floor(Math.random() * 4)];
+  const fullFeatPlaylist = await fetchApi(
+    `playlists/${featPlaylist.id}`,
+    session!.accessToken,
+  );
 
   return (
     <div className="ml-4 flex w-full justify-between gap-4 rounded-bl-3xl rounded-tl-3xl bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-4 pr-6 md:gap-10 md:p-6  2xl:p-8">
@@ -35,15 +40,22 @@ const HomeBanner = async () => {
           </p>
         </div>
         <div className="flex items-center  md:gap-4">
-          <Button className="hidden p-5 font-semibold md:block xl:p-6 xl:text-xl 2xl:p-7 2xl:text-2xl">
+          <PlayAllSongsBtn
+            data={fullFeatPlaylist}
+            session={session}
+            className={
+              "hidden p-5 font-medium md:inline-flex  xl:text-xl 2xl:p-7 2xl:text-2xl"
+            }
+          >
             PLAY
-          </Button>
+          </PlayAllSongsBtn>
+
           <Button className=" px-[0.8rem] py-5 font-semibold md:hidden">
             <FaPlay />
           </Button>
           <Button
             variant={"secondary"}
-            className="hidden p-5 font-medium md:block xl:p-6 xl:text-xl 2xl:p-7 2xl:text-2xl"
+            className="hidden p-5 font-medium md:inline-flex xl:p-6 xl:text-xl 2xl:p-7 2xl:text-2xl"
           >
             FOLLOW
           </Button>

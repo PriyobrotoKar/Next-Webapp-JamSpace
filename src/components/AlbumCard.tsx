@@ -3,11 +3,20 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { FaPlay } from "react-icons/fa6";
 import parse from "html-react-parser";
+import PlayAllSongsBtn from "./PlayAllSongsBtn";
+import { Session } from "next-auth";
+import fetchApi from "@/lib/fetchApi";
 
-const AlbumCard = ({ items }: { items: any[] }) => {
+const AlbumCard = ({
+  items,
+  session,
+}: {
+  items: any[];
+  session: Session | null;
+}) => {
   return (
     <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-4 md:gap-4 2xl:gap-12 ">
-      {items.map((item, i) => {
+      {items.map(async (item, i) => {
         if (!item) return;
         return (
           <Link key={item.id} href={`/${item.type}/${item.id}`}>
@@ -30,13 +39,6 @@ const AlbumCard = ({ items }: { items: any[] }) => {
                       parse(item.description)}
                 </div>
               </div>
-              <Button
-                size={"sm"}
-                className="absolute bottom-[20%] left-1/2 -translate-x-1/2 space-x-2 px-4 text-lg text-white opacity-0  transition-all duration-300 group-hover:bottom-1/4 group-hover:opacity-100"
-              >
-                <FaPlay />
-                <div>PLAY</div>
-              </Button>
             </div>
           </Link>
         );

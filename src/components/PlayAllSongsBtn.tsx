@@ -13,27 +13,36 @@ const PlayAllSongsBtn = ({
   data,
   session,
   children,
+  className,
 }: {
   data: any;
   session: Session | null;
+  className: string;
   children: ReactNode;
 }) => {
   const dispatch = useDispatch();
-  const allTracks =
-    data.type === "playlist"
-      ? data.tracks.items.map(({ track }: { track: any }) => ({
-          ...track,
-        }))
-      : data.tracks.items.map((item: { item: any }) => ({
-          album: { images: data.images },
-          ...item,
-        }));
-  allTracks.shift();
+  let allTracks: any[];
+  let firstSong: any = null;
 
-  const firstSong =
-    data.type === "playlist"
-      ? data.tracks.items[0]
-      : { track: { album: { images: data.images }, ...data.tracks.items[0] } };
+  if (data.type === "playlist") {
+    allTracks = data.tracks.items.map(({ track }: { track: any }) => ({
+      ...track,
+    }));
+    firstSong = data.tracks.items[0];
+  } else if (data.type === "artist") {
+    allTracks = data.tracks.items;
+    firstSong = { track: data.tracks.items[0] };
+  } else {
+    allTracks = data.tracks.items.map((item: { item: any }) => ({
+      album: { images: data.images },
+      ...item,
+    }));
+    firstSong = {
+      track: { album: { images: data.images }, ...data.tracks.items[0] },
+    };
+  }
+
+  allTracks.shift();
 
   return (
     <Button
@@ -56,7 +65,7 @@ const PlayAllSongsBtn = ({
           );
         }
       }}
-      className="space-x-2 p-6 text-xl text-white"
+      className={className}
     >
       {children}
     </Button>

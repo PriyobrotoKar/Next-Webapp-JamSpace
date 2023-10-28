@@ -6,6 +6,7 @@ import fetchApi from "@/lib/fetchApi";
 
 import { FaPlay } from "react-icons/fa6";
 import { duration } from "@/lib/utils";
+import { SongMedium } from "./Song";
 
 const RecentlyPlayed = async () => {
   const session = await getServerSession(authOptions);
@@ -44,45 +45,7 @@ const RecentlyPlayed = async () => {
             if (i === 0) return;
             if (i > 4) return;
             if (data?.items[i - 1].track.id === item.track.id) return;
-            return (
-              <div
-                key={item.track.id}
-                className="group flex justify-between gap-4 rounded-[12px] p-3 transition-colors hover:bg-orange-950/30"
-              >
-                <div className="flex group-hover:gap-4">
-                  <div className="w-0 self-center opacity-0 group-hover:opacity-100">
-                    <FaPlay />
-                  </div>
-                  <div className="flex gap-4 transition-all group-hover:translate-x-4">
-                    <div>
-                      <Image
-                        className="min-w-[3rem] rounded-[8px]"
-                        src={item.track.album.images[2].url}
-                        alt=""
-                        width={50}
-                        height={50}
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <h2 className="line-clamp-1">{item.track.name}</h2>
-                      <p className="line-clamp-1 text-xs text-neutral-400">
-                        {item.track.artists.map((artist: any) => {
-                          return (
-                            <span
-                              key={artist.id}
-                              className=""
-                            >{`${artist.name}, `}</span>
-                          );
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="hidden self-center text-sm text-neutral-400 md:block">
-                  {duration(item.track.duration_ms)}
-                </div>
-              </div>
-            );
+            return <SongMedium key={item.track.id} item={item.track} />;
           })}
         </div>
       </div>

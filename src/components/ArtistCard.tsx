@@ -32,13 +32,6 @@ const ArtistCard = ({ artists }: { artists: any[] }) => {
               <div className="line-clamp-1 font-semibold">{artist.name}</div>
               <div className="text-sm text-neutral-400">Artist</div>
             </div>
-            <Button
-              size={"sm"}
-              className="absolute bottom-[20%] left-1/2 -translate-x-1/2 space-x-2 px-4 text-lg text-white opacity-0  transition-all duration-300 group-hover:bottom-1/4 group-hover:opacity-100"
-            >
-              <FaPlay />
-              <div>PLAY</div>
-            </Button>
           </Link>
         );
       })}
