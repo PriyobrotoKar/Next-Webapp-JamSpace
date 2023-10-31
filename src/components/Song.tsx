@@ -60,9 +60,12 @@ export const SongVeryLarge = ({ item }: any) => {
       <div>
         <h2 className="line-clamp-1">{item?.items[0].track.name}</h2>
         <p className="line-clamp-1 text-sm text-neutral-400">
-          {item?.items[0].track.artists.map((artist: any) => {
+          {item?.items[0].track.artists.map((artist: any, i: number) => {
             return (
-              <span key={artist.id} className="">{`${artist.name}, `}</span>
+              <span key={artist.id} className="">
+                {artist.name +
+                  (i !== item?.items[0].track.artists.length - 1 ? ", " : "")}
+              </span>
             );
           })}
         </p>
