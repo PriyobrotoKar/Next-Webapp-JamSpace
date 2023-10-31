@@ -28,8 +28,8 @@ const HomeBanner = async () => {
   );
 
   return (
-    <div className="ml-4 flex w-full justify-between gap-4 rounded-bl-3xl rounded-tl-3xl bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-4 pr-6 md:gap-10 md:p-6  2xl:p-8">
-      <div className="flex flex-1 flex-col justify-between gap-4 md:flex-[2_2_0%] xl:gap-6">
+    <div className="ml-auto flex w-[95%] justify-between gap-4 rounded-bl-3xl rounded-tl-3xl bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-4  md:w-full md:gap-10 md:p-6  2xl:p-8">
+      <div className="flex flex-1 flex-col justify-between gap-2 md:flex-[2_2_0%] xl:gap-6">
         <div className="space-y-3 xl:space-y-4">
           <div className="text-sm text-neutral-300 md:text-base">PLAYLIST</div>
           <h2 className="text-xl font-medium md:text-4xl xl:text-5xl 2xl:text-6xl">
@@ -66,7 +66,7 @@ const HomeBanner = async () => {
       </div>
       <div className="max-w-[19rem] flex-1 md:flex-[1.5_1.5_0%] ">
         <Image
-          className="h-full w-full  rounded-2xl"
+          className="h-full rounded-2xl  md:w-full"
           alt=""
           src={featPlaylist?.images[0].url || "/no-image.png"}
           priority

@@ -37,7 +37,7 @@ function ArtistBanner({
         />
       </div>
       <div className=" space-y-4">
-        <div className="relative w-fit font-semibold fluid-4xl">
+        <div className="relative w-fit font-semibold fluid-3xl md:fluid-4xl">
           <div className="absolute left-full top-0 translate-x-2 text-2xl text-blue-400">
             <MdVerified />
           </div>
