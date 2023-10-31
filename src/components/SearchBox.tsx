@@ -21,7 +21,7 @@ const SearchBox = () => {
   }, [search]);
 
   return (
-    <div className="z-10 mx-4 mt-2 flex items-center gap-1 rounded-full border bg-white px-4 text-neutral-800 ring-white focus-within:ring-1 md:hidden">
+    <div className="relative z-10 mx-4 mt-2 flex items-center gap-1 rounded-full border bg-white px-4 text-neutral-800 ring-white focus-within:ring-1 md:hidden">
       <FiSearch />
       <Input
         value={search}

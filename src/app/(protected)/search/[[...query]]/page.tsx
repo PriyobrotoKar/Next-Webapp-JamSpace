@@ -73,17 +73,17 @@ const TopResult = ({ searchResult, query }: any) => {
             />
           </div>
 
-          <div className="flex-[2_2_0%] space-y-2">
+          <div className="flex-1 space-y-2 md:flex-[2_2_0%]">
             <div className="line-clamp-2 text-2xl font-semibold md:text-3xl">
               <Link href={`/${topResult.type}/${topResult.id}`}>
                 {topResult.name}
               </Link>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-fit rounded-full bg-neutral-800/30 px-4 py-2 text-sm">
+            <div className="flex flex-col gap-2  md:flex-row md:gap-4">
+              <div className="order-2 w-fit rounded-full bg-neutral-800/30 px-4 py-2 text-sm md:order-1">
                 {topResult.type[0].toUpperCase() + topResult.type.slice(1)}
               </div>
-              <div className="line-clamp-1">
+              <div className="order-1 line-clamp-1 md:order-2">
                 {topResult.artists?.map((artist, i, artists) => {
                   return (
                     <Link href={`/artist/${artist.id}`} key={artist.id}>
