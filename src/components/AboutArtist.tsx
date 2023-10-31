@@ -1,24 +1,48 @@
 "use client";
 
-import useFetch from "@/hooks/useFetch";
+import useFetch, { fetchDataFromApi } from "@/hooks/useFetch";
 import { format } from "@/lib/utils";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { LoadingAbout } from "./LoadingUI";
 import { AboutErrorUI } from "./ErrorUI";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const AboutArtist = () => {
   const { data: session } = useSession();
-  const { data: currentSong } = useFetch(
-    "me/player/currently-playing",
-    session?.accessToken,
+  const currSong = useSelector(
+    (state: RootState) => state.currPlayingSong.song,
   );
+  const [aboutArtist, setAboutArtist] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  const { data: aboutArtist, loading } = useFetch(
-    currentSong ? `artists/${currentSong.item.artists[0].id}` : "",
-    session?.accessToken,
-  );
+  const fetchArtistDetails = async () => {
+    setLoading(true);
+    try {
+      const artistId = currSong.artists[0].id;
+      const artistData = await fetchDataFromApi(
+        `artists/${artistId}`,
+        session?.accessToken,
+      );
+      setLoading(false);
+      return artistData;
+    } catch (error: any) {
+      console.error(error.message);
+      setLoading(false);
+      throw new Error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (session && currSong) {
+      fetchArtistDetails().then((artist) => setAboutArtist(artist));
+    } else {
+      setLoading(false);
+    }
+  }, [currSong, session]);
 
   return (
     <div>
@@ -53,7 +77,7 @@ const AboutArtist = () => {
             )} monthly active listeners`}</p>
             <div className="flex flex-wrap gap-2">
               {aboutArtist?.genres.map((genre: string, i: number) => {
-                if (i === 3) return;
+                if (i >= 3) return;
                 return (
                   <div
                     key={genre}

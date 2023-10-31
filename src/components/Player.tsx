@@ -24,6 +24,9 @@ import { MdShuffle } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Slider } from "./ui/slider";
 import { updateUserQueue } from "@/reducer/userQueue/userQueueSlice";
+import toast from "react-hot-toast";
+import Link from "next/link";
+import { AiFillInfoCircle } from "react-icons/ai";
 
 const Player = () => {
   const { data: session } = useSession();
@@ -78,7 +81,6 @@ const Player = () => {
           "me/player/currently-playing",
           session?.accessToken,
         ).then((data) => {
-          console.log("call from player");
           if (data) {
             dispatch(updateCurrSong(data));
             setTotalDuration(data.item.duration_ms);
@@ -108,19 +110,31 @@ const Player = () => {
           session?.accessToken,
         );
       } catch (error: any) {
-        console.error(error.message);
+        toast.error("Something went wrong!");
       }
     }, 800),
     [session],
   );
 
   const handlePlayPause = async () => {
-    dispatch(updatePlayingState(!isPlaying));
     if (isPlaying) {
       try {
         await putDataFromApi("me/player/pause", {}, session?.accessToken);
+        dispatch(updatePlayingState(!isPlaying));
       } catch (error: any) {
-        console.error(error.message);
+        toast(
+          (t) => (
+            <Link className="flex items-center gap-2" href={"/help"}>
+              Unable to play song <AiFillInfoCircle className={"text-xl"} />
+            </Link>
+          ),
+          {
+            style: {
+              background: "#eb4823",
+              color: "white",
+            },
+          },
+        );
       }
     } else {
       try {
@@ -132,8 +146,21 @@ const Player = () => {
           },
           session?.accessToken,
         );
+        dispatch(updatePlayingState(!isPlaying));
       } catch (error: any) {
-        console.error(error.message);
+        toast(
+          (t) => (
+            <Link className="flex items-center gap-2" href={"/help"}>
+              Unable to play song <AiFillInfoCircle className={"text-xl"} />
+            </Link>
+          ),
+          {
+            style: {
+              background: "#eb4823",
+              color: "white",
+            },
+          },
+        );
       }
     }
   };
@@ -151,7 +178,27 @@ const Player = () => {
         dispatch(updateUserQueue(queue.slice(1)));
       }
     } catch (error: any) {
-      console.error(error.message);
+      toast.error("Something went wrong!");
+    }
+  };
+
+  const fetchPreviousSong = async () => {
+    let timeout;
+    try {
+      const currSong = await fetchDataFromApi(
+        `me/player/currently-playing`,
+        session?.accessToken,
+      );
+      if (currSong.item.name === song.name) {
+        if (!timeout) {
+          timeout = setTimeout(fetchPreviousSong, 1000);
+        }
+      } else {
+        dispatch(updateCurrSong(currSong));
+        clearTimeout(timeout);
+      }
+    } catch (error: any) {
+      throw new Error(error.message);
     }
   };
 
@@ -159,9 +206,11 @@ const Player = () => {
     try {
       if (session) {
         await postDataFromApi("me/player/previous", {}, session?.accessToken);
+        dispatch(updateUserQueue([song, ...queue]));
+        fetchPreviousSong();
       }
     } catch (error: any) {
-      console.error(error.message);
+      toast.error("Something went wrong!");
     }
   };
 

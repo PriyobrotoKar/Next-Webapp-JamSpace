@@ -30,59 +30,15 @@ const AlbumPlaylistSongs = ({ data }: any) => {
       </div>
       <div className="mt-4 space-y-2">
         {data.tracks.items.map((item: any, i: number) => {
-          if (data.type === "playlist") {
-            return <SongLarge key={item.id} item={item} i={i} />;
-          } else {
-            const { name, artists, duration_ms, id } = item;
-            return (
-              <div
-                key={id}
-                className="group flex items-center justify-between gap-6 rounded-xl px-3 py-2 transition hover:bg-orange-950/40"
-              >
-                <div className="flex flex-1 items-center gap-4">
-                  <div className="relative min-w-[1rem] text-right">
-                    <div className="visible text-neutral-400 group-hover:invisible">
-                      {i + 1}
-                    </div>
-                    <FaPlay
-                      className={
-                        "invisible absolute left-1/2 top-1/2 -translate-x-1/4 -translate-y-1/2 group-hover:visible"
-                      }
-                    />
-                  </div>
-                  <div className="flex  gap-2">
-                    <div className="flex-1 space-y-1">
-                      <Link
-                        href={`/track/${id}`}
-                        className="line-clamp-1 hover:underline"
-                      >
-                        {name}
-                      </Link>
-                      <div className="line-clamp-1 text-xs text-neutral-400">
-                        {artists.map((artist: any, i: number) => {
-                          return (
-                            <Link key={artist.id} href={`/artist/${artist.id}`}>
-                              <span className="hover:underline group-hover:text-white">
-                                {artist.name +
-                                  (i !== artists.length - 1 ? ", " : "")}
-                              </span>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={
-                    "flex justify-between text-center  text-sm text-neutral-400"
-                  }
-                >
-                  <div className="w-7">{duration(duration_ms)}</div>
-                </div>
-              </div>
-            );
-          }
+          return (
+            <SongLarge
+              key={item.id}
+              type={data.type}
+              albumImgs={data?.images}
+              item={item}
+              i={i}
+            />
+          );
         })}
       </div>
     </div>

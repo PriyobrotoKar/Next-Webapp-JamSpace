@@ -1,16 +1,30 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import ArtistCard from "@/components/ArtistCard";
 import Discography from "@/components/Discography";
+import PlayAllSongsBtn from "@/components/PlayAllSongsBtn";
+import { SongSmall } from "@/components/Song";
 import { Button } from "@/components/ui/button";
 import fetchApi from "@/lib/fetchApi";
 import { duration, format } from "@/lib/utils";
-import { getServerSession } from "next-auth";
+import { Session, getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { FaPlay } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
 
-function ArtistBanner({ name, images }: { name: string; images: any[] }) {
+function ArtistBanner({
+  name,
+  images,
+  topTracks,
+  uri,
+  session,
+}: {
+  name: string;
+  images: any[];
+  uri: string;
+  topTracks: any;
+  session: Session | null;
+}) {
   return (
     <div className="flex flex-col gap-10 md:flex-row md:items-end">
       <div className="self-center">
@@ -30,10 +44,14 @@ function ArtistBanner({ name, images }: { name: string; images: any[] }) {
           {name}
         </div>
         <div className="flex">
-          <Button className="space-x-2 p-6 text-xl text-white">
+          <PlayAllSongsBtn
+            data={{ uri, type: "artist", tracks: { items: topTracks.tracks } }}
+            session={session}
+            className={"space-x-2 p-6 text-xl text-white"}
+          >
             <FaPlay />
             <div>PLAY</div>
-          </Button>
+          </PlayAllSongsBtn>
           <Button variant={"link"} className="space-x-2 p-6 text-xl text-white">
             Follow
           </Button>
@@ -51,35 +69,24 @@ function Overview({ topTracks, followers, genres, popularity }: any) {
         <div>
           {topTracks.tracks?.map((track: any, i: number) => {
             if (i > 4) return;
-            return (
-              <div
-                key={track.id}
-                className="group flex items-center justify-between gap-4 rounded-xl px-3 py-2 hover:bg-orange-950/40"
-              >
-                <div className="text-sm group-hover:text-orange-500">
-                  <FaPlay />
-                </div>
-                <div className="line-clamp-1 flex-1">{track.name}</div>
-                <div className="text-sm text-neutral-400">
-                  {duration(track.duration_ms)}
-                </div>
-              </div>
-            );
+            return <SongSmall key={track.id} track={track} />;
           })}
         </div>
       </div>
       <div className="grid flex-1 auto-rows-fr grid-cols-2 grid-rows-2 gap-4  md:gap-6 md:p-10 2xl:p-0">
         <div className="row-span-2 flex flex-col items-center justify-center gap-6 rounded-xl bg-neutral-950 p-10 ">
           <div className="line-clamp-5">
-            {genres.map((genre: string, i: number) => {
-              if (i > 2) return;
-              return (
-                <div key={genre} className="text-2xl font-semibold">
-                  {genre[0].toUpperCase() + genre.slice(1)}
-                  {i !== genres.length - 1 ? ", " : ""}
-                </div>
-              );
-            })}
+            {genres.length
+              ? genres.map((genre: string, i: number) => {
+                  if (i > 2) return;
+                  return (
+                    <div key={genre} className="text-2xl font-semibold">
+                      {genre[0].toUpperCase() + genre.slice(1)}
+                      {i !== genres.length - 1 ? ", " : ""}
+                    </div>
+                  );
+                })
+              : "--"}
           </div>
           <div className="text-neutral-400">Genres</div>
         </div>
@@ -134,12 +141,19 @@ const page = async ({ params }: { params: { id: string } }) => {
     genres,
     name,
     popularity,
+    uri,
     followers: { total },
   } = artist;
 
   return (
     <div className="space-y-10 px-4">
-      <ArtistBanner name={name} images={images} />
+      <ArtistBanner
+        name={name}
+        images={images}
+        uri={uri}
+        topTracks={topTracks}
+        session={session}
+      />
       <Overview
         topTracks={topTracks}
         followers={total}

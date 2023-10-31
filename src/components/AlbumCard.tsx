@@ -3,6 +3,9 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { FaPlay } from "react-icons/fa6";
 import parse from "html-react-parser";
+import PlayAllSongsBtn from "./PlayAllSongsBtn";
+import { Session } from "next-auth";
+import fetchApi from "@/lib/fetchApi";
 
 const AlbumCard = ({ items }: { items: any[] }) => {
   return (
@@ -11,7 +14,7 @@ const AlbumCard = ({ items }: { items: any[] }) => {
         if (!item) return;
         return (
           <Link key={item.id} href={`/${item.type}/${item.id}`}>
-            <div className="group relative flex h-full flex-row items-center gap-4 rounded-xl  p-4 hover:bg-orange-950/40 md:flex-col">
+            <div className="group relative flex h-full flex-row items-center gap-4 rounded-xl p-4  hover:bg-orange-950/40 md:flex-col md:items-start">
               <div className=" flex-initial">
                 <Image
                   className="w-16 rounded-xl transition-shadow group-hover:shadow-2xl md:w-full"
@@ -30,13 +33,6 @@ const AlbumCard = ({ items }: { items: any[] }) => {
                       parse(item.description)}
                 </div>
               </div>
-              <Button
-                size={"sm"}
-                className="absolute bottom-[20%] left-1/2 -translate-x-1/2 space-x-2 px-4 text-lg text-white opacity-0  transition-all duration-300 group-hover:bottom-1/4 group-hover:opacity-100"
-              >
-                <FaPlay />
-                <div>PLAY</div>
-              </Button>
             </div>
           </Link>
         );

@@ -1,6 +1,5 @@
 import React from "react";
-import { AiFillFire } from "react-icons/ai";
-import { BsPersonHeart } from "react-icons/bs";
+import { HiTrendingUp } from "react-icons/hi";
 import { GoHomeFill } from "react-icons/go";
 import { FiSearch } from "react-icons/fi";
 import { IoMdMusicalNote } from "react-icons/io";
@@ -19,10 +18,10 @@ const BottomNav = () => {
         <div className="text-sm">Search</div>
       </Link>
 
-      <button className="flex flex-col items-center">
-        <BsPersonHeart className={"text-2xl"} />
-        <div className="text-sm">Artists</div>
-      </button>
+      <Link className="flex flex-col items-center" href={"/trending"}>
+        <HiTrendingUp className={"text-2xl"} />
+        <div className="text-sm">Trending</div>
+      </Link>
       <Link className="flex flex-col items-center" href={`/genres`}>
         <IoMdMusicalNote className={"text-2xl"} />
         <div className="text-sm">Genres</div>

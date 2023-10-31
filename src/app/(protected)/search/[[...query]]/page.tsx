@@ -64,7 +64,7 @@ const TopResult = ({ searchResult, query }: any) => {
     <div className="flex-1 space-y-6">
       <h2 className="text-xl font-semibold">Top Result</h2>
       <div>
-        <div className="group relative flex flex-row items-center gap-4 rounded-xl bg-orange-950/20 p-6 transition-all hover:bg-orange-950/30 md:flex-col">
+        <div className="group relative flex flex-row items-center gap-4 rounded-xl bg-orange-950/20 p-6 transition-all hover:bg-orange-950/30 md:flex-col md:items-start">
           <div className="flex-initial">
             <Image
               className="w-20 rounded-full object-cover object-center md:h-32 md:w-32"
@@ -99,12 +99,6 @@ const TopResult = ({ searchResult, query }: any) => {
               </div>
             </div>
           </div>
-          <Button
-            size={"sm"}
-            className="absolute bottom-[5%] right-0 -translate-x-1/2 space-x-2 rounded-full px-[1.30rem] py-8 text-center text-2xl text-white opacity-0  transition-all duration-300 focus:bottom-[10%] focus:opacity-100 group-hover:bottom-[10%] group-hover:opacity-100"
-          >
-            <FaPlay className={"translate-x-[0.1rem]"} />
-          </Button>
         </div>
       </div>
     </div>
@@ -134,7 +128,7 @@ const Artists = ({ searchResult }: any) => {
   );
 };
 
-const Albums = ({ searchResult }: any) => {
+const Albums = ({ searchResult, session }: any) => {
   return (
     <div className="space-y-6 px-4">
       <h2 className="text-xl font-semibold">Albums</h2>
@@ -161,8 +155,9 @@ const page = async ({ params }: { params: { query: string } }) => {
             <TopResult searchResult={searchResult} query={query} />
             <Songs searchResult={searchResult} />
           </div>
+
           <Artists searchResult={searchResult} />
-          <Albums searchResult={searchResult} />
+          <Albums searchResult={searchResult} session={session} />
         </div>
       ) : (
         <SearchBox />

@@ -16,14 +16,23 @@ export const currPlayingSlice = createSlice({
   initialState,
   reducers: {
     updateCurrSong: (state, action: PayloadAction<any>) => {
+      let context = null;
       if (action.payload.item) {
         const progress_ms = action.payload.progress_ms;
         state.isPlaying = action.payload.is_playing;
 
-        state.song = { progress_ms, ...action.payload.item };
+        if (action.payload.context) {
+          context = {
+            type: action.payload.context.type,
+            id: action.payload.context.uri.split(":")[2],
+          };
+        }
+
+        state.song = { progress_ms, context, ...action.payload.item };
       } else if (action.payload.track) {
         state.song = {
           progress_ms: 0,
+          context,
           ...action.payload.track,
         };
       }
