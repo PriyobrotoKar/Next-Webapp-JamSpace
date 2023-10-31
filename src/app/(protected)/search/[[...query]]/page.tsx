@@ -46,7 +46,6 @@ const TopResult = ({ searchResult, query }: any) => {
     const similarity = cos.similarity(query, item.name);
     if (similarity > maxSimilar) {
       maxSimilar = similarity;
-      console.log(item);
       topResult = {
         id: item.id,
         name: item.name,

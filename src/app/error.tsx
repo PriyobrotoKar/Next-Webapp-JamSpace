@@ -19,7 +19,9 @@ export default function Error({
   return (
     <div className="flex min-h-[100svh] flex-col items-center justify-center gap-8">
       <div className="space-y-4">
-        <h2 className="text-5xl font-bold">Something went wrong!</h2>
+        <h2 className="text-center text-5xl font-bold">
+          Something went wrong!
+        </h2>
         <Link
           className="mx-auto block w-fit text-sm text-neutral-300 underline"
           href={"/help"}

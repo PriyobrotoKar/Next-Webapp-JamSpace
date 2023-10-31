@@ -103,7 +103,7 @@ export const LoaidingAlbumPlaylistBanner = () => {
   return (
     <>
       <div className="flex flex-col gap-10 px-4 md:flex-row md:items-end">
-        <div className="h-[20rem] w-[80%]  animate-pulse self-center rounded-xl bg-orange-950/20 md:w-auto md:flex-[0_0_20rem]"></div>
+        <div className="h-[18rem] w-[90%]  animate-pulse self-center rounded-xl bg-orange-950/20 md:w-auto md:flex-[0_0_20rem]"></div>
         <div className="flex-1 space-y-6">
           <div className="h-8 w-20 animate-pulse rounded-full bg-orange-950/20"></div>
           <div className="h-20 animate-pulse rounded-xl bg-orange-950/20"></div>
@@ -120,11 +120,11 @@ export const LoaidingAlbumPlaylistBanner = () => {
 
 export const LoadingAlbumPlaylistSongs = () => {
   return (
-    <div className="mt-2 flex items-center justify-between px-4 py-2">
-      <div className="flex items-center gap-4 px-8">
+    <div className="mt-2 flex items-center justify-between gap-2 px-4 py-2">
+      <div className="flex flex-1 items-center gap-4 pl-8">
         <div className="h-12 w-12 animate-pulse rounded-[8px] bg-orange-950/40"></div>
-        <div className="space-y-2">
-          <div className="h-4 w-52 animate-pulse rounded-full bg-orange-950/40"></div>
+        <div className="flex-1 space-y-2">
+          <div className="h-4 max-w-[13rem] animate-pulse rounded-full bg-orange-950/40"></div>
           <div className="h-3 w-32 animate-pulse rounded-full bg-orange-950/40"></div>
         </div>
       </div>
