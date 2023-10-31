@@ -53,9 +53,13 @@ const HomeBanner = async () => {
             PLAY
           </PlayAllSongsBtn>
 
-          <Button className=" px-[0.8rem] py-5 font-semibold md:hidden">
+          <PlayAllSongsBtn
+            data={fullFeatPlaylist}
+            session={session}
+            className={" px-[0.8rem] py-5 font-semibold md:hidden"}
+          >
             <FaPlay />
-          </Button>
+          </PlayAllSongsBtn>
           <Button
             variant={"secondary"}
             className="hidden p-5 font-medium md:inline-flex xl:p-6 xl:text-xl 2xl:p-7 2xl:text-2xl"
