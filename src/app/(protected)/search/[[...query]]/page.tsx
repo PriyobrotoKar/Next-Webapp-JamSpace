@@ -5,15 +5,13 @@ import { getServerSession } from "next-auth";
 import { unescape } from "querystring";
 import React from "react";
 import Image from "next/image";
-import { FaPlay } from "react-icons/fa6";
-import { duration } from "@/lib/utils";
+
 import ArtistCard from "@/components/ArtistCard";
 import AlbumCard from "@/components/AlbumCard";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+
 import { SongMedium } from "@/components/Song";
-import { FiSearch } from "react-icons/fi";
-import { Input } from "@/components/ui/input";
+
 import SearchBox from "@/components/SearchBox";
 
 const TopResult = ({ searchResult, query }: any) => {
@@ -67,7 +65,7 @@ const TopResult = ({ searchResult, query }: any) => {
         <div className="group relative flex flex-row items-center gap-4 rounded-xl bg-orange-950/20 p-6 transition-all hover:bg-orange-950/30 md:flex-col md:items-start">
           <div className="flex-initial">
             <Image
-              className="w-20 rounded-full object-cover object-center md:h-32 md:w-32"
+              className="aspect-square w-20 rounded-full object-cover object-center md:h-32 md:w-32"
               src={topResult.imageUrl}
               alt=""
               width={100}

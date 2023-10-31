@@ -354,7 +354,7 @@ export const SongSmall = ({ track }: any) => {
     <div
       onClick={async () => {
         try {
-          await playSong(track.uri, session, track, track, dispatch);
+          await playSong(track.uri, session, { track: track }, track, dispatch);
         } catch (error) {
           toast(
             (t) => (
