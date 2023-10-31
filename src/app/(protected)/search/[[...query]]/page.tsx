@@ -46,13 +46,16 @@ const TopResult = ({ searchResult, query }: any) => {
     const similarity = cos.similarity(query, item.name);
     if (similarity > maxSimilar) {
       maxSimilar = similarity;
+      console.log(item);
       topResult = {
         id: item.id,
         name: item.name,
         artists: item.type !== "artist" ? item.artists : [],
         owner: item.type === "playlist" ? item.owner.display_name : "",
         imageUrl:
-          item.type === "track" ? item.album.images[0].url : item.images[0].url,
+          item.type === "track"
+            ? item.album.images[0].url
+            : item.images[0]?.url,
         type: item.type,
       };
     }
@@ -66,7 +69,7 @@ const TopResult = ({ searchResult, query }: any) => {
           <div className="flex-initial">
             <Image
               className="aspect-square w-20 rounded-full object-cover object-center md:h-32 md:w-32"
-              src={topResult.imageUrl}
+              src={topResult.imageUrl || "/no-image.png"}
               alt=""
               width={100}
               height={100}
