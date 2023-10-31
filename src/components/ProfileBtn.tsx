@@ -48,6 +48,9 @@ const ProfileBtn = () => {
           <DropdownMenuItem className="rounded-[10px]">
             <Link href={`/user/${data?.providerAccountId}`}>Profile</Link>
           </DropdownMenuItem>
+          <DropdownMenuItem className="rounded-[10px]">
+            <Link href={`/about`}>Info</Link>
+          </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => signOut()}
             className="rounded-[10px]"
