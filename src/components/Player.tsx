@@ -262,9 +262,6 @@ const Player = () => {
         {/*Controls */}
         <div className="md:flex-[2_2_0%] md:space-y-2">
           <div className="flex items-center justify-center gap-4 text-2xl">
-            <div className="hidden rounded-full p-2 text-xl hover:bg-neutral-400/20  md:block">
-              <MdShuffle />
-            </div>
             <div
               onClick={handlePrevious}
               className="hidden rounded-full p-2 hover:bg-neutral-400/20  md:block"
@@ -287,9 +284,6 @@ const Player = () => {
             >
               <BiSkipNext />
             </button>
-            <div className="hidden rounded-full p-2 text-lg hover:bg-neutral-400/20  md:block">
-              <BsRepeat />
-            </div>
           </div>
           <div className="flex items-center justify-center gap-2">
             <div className="hidden w-8 text-right text-xs text-neutral-300 md:block">
