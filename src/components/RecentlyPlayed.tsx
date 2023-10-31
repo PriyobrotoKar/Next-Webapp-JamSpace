@@ -19,7 +19,7 @@ const RecentlyPlayed = async () => {
   return (
     <div className="px-4">
       <h1 className="mb-6 text-xl font-semibold">Recently Played</h1>
-      <div className="flex md:gap-4 xl:gap-10">
+      <div className="flex flex-col md:flex-row md:gap-4 xl:gap-10">
         <div className="flex-1 space-y-4">
           <SongVeryLarge item={data} />
         </div>
