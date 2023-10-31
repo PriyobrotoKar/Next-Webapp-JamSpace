@@ -16,7 +16,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   );
   return (
     <div className="space-y-6">
-      <h1 className="mt-32 font-semibold fluid-4xl">{category.name}</h1>
+      <h1 className="mt-32 px-4 font-semibold fluid-4xl">{category.name}</h1>
       <InfiniteScroll
         data={data}
         url={`browse/categories/${params.id}/playlists`}

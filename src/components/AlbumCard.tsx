@@ -7,20 +7,14 @@ import PlayAllSongsBtn from "./PlayAllSongsBtn";
 import { Session } from "next-auth";
 import fetchApi from "@/lib/fetchApi";
 
-const AlbumCard = ({
-  items,
-  session,
-}: {
-  items: any[];
-  session: Session | null;
-}) => {
+const AlbumCard = ({ items }: { items: any[] }) => {
   return (
     <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-4 md:gap-4 2xl:gap-12 ">
-      {items.map(async (item, i) => {
+      {items.map((item, i) => {
         if (!item) return;
         return (
           <Link key={item.id} href={`/${item.type}/${item.id}`}>
-            <div className="group relative flex h-full flex-row items-center gap-4 rounded-xl  p-4 hover:bg-orange-950/40 md:flex-col">
+            <div className="group relative flex h-full flex-row items-center gap-4 rounded-xl p-4  hover:bg-orange-950/40 md:flex-col md:items-start">
               <div className=" flex-initial">
                 <Image
                   className="w-16 rounded-xl transition-shadow group-hover:shadow-2xl md:w-full"

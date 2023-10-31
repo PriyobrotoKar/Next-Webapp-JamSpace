@@ -39,10 +39,14 @@ const ProfileBtn = () => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="rounded-[10px]">
-            <Link href={`/user/${data?.providerAccountId}`}>Account</Link>
+            <Link
+              href={`https://open.spotify.com/user/${data?.providerAccountId}`}
+            >
+              Account
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="rounded-[10px]">
-            Profile
+            <Link href={`/user/${data?.providerAccountId}`}>Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => signOut()}

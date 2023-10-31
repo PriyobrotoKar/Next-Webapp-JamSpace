@@ -132,7 +132,7 @@ const Albums = ({ searchResult, session }: any) => {
   return (
     <div className="space-y-6 px-4">
       <h2 className="text-xl font-semibold">Albums</h2>
-      <AlbumCard items={searchResult.albums.items} session={session} />
+      <AlbumCard items={searchResult.albums.items} />
     </div>
   );
 };
@@ -155,6 +155,7 @@ const page = async ({ params }: { params: { query: string } }) => {
             <TopResult searchResult={searchResult} query={query} />
             <Songs searchResult={searchResult} />
           </div>
+
           <Artists searchResult={searchResult} />
           <Albums searchResult={searchResult} session={session} />
         </div>

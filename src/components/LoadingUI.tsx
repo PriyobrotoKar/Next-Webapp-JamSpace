@@ -102,8 +102,8 @@ export const LoadingRecently = () => {
 export const LoaidingAlbumPlaylistBanner = () => {
   return (
     <>
-      <div className="flex items-end gap-10">
-        <div className="h-[20rem] flex-[0_0_20rem] animate-pulse rounded-xl bg-orange-950/20"></div>
+      <div className="flex flex-col gap-10 px-4 md:flex-row md:items-end">
+        <div className="h-[20rem] w-[80%]  animate-pulse self-center rounded-xl bg-orange-950/20 md:w-auto md:flex-[0_0_20rem]"></div>
         <div className="flex-1 space-y-6">
           <div className="h-8 w-20 animate-pulse rounded-full bg-orange-950/20"></div>
           <div className="h-20 animate-pulse rounded-xl bg-orange-950/20"></div>
@@ -130,6 +130,68 @@ export const LoadingAlbumPlaylistSongs = () => {
       </div>
       <div>
         <div className="h-4 w-8 animate-pulse rounded-full bg-orange-950/40"></div>
+      </div>
+    </div>
+  );
+};
+
+export const LoadingSearchTopResult = () => {
+  return (
+    <div className="flex-1 space-y-4">
+      <h2 className="text-xl font-semibold">Top Result</h2>
+      <div className="flex animate-pulse flex-col justify-end gap-4 rounded-xl bg-orange-950/40  p-6">
+        <div className="h-32 w-32 animate-pulse rounded-full bg-orange-950/40"></div>
+        <div className="h-16 animate-pulse rounded-xl bg-orange-950/40"></div>
+        <div className="h-8 w-20 animate-pulse rounded-lg bg-orange-950/40"></div>
+      </div>
+    </div>
+  );
+};
+export const LoadingSearchSongs = () => {
+  return (
+    <div className="flex-1 space-y-4">
+      <h2 className="text-xl font-semibold">Songs</h2>
+      <div className=" space-y-4">
+        <div className="flex h-[4.3rem] items-center justify-between gap-4 rounded-xl bg-orange-950/10 px-3 py-2">
+          <div className="flex h-full items-center gap-4">
+            <div className="h-full w-[3.3rem] animate-pulse rounded-xl bg-orange-950/20"></div>
+            <div className="space-y-3">
+              <div className="h-5 w-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+              <div className="h-3 w-40 animate-pulse rounded-xl bg-orange-950/20"></div>
+            </div>
+          </div>
+          <div className="h-4 w-8 animate-pulse rounded-xl bg-orange-950/20"></div>
+        </div>
+        <div className="flex h-[4.3rem] items-center justify-between gap-4 rounded-xl bg-orange-950/10 px-3 py-2">
+          <div className="flex h-full items-center gap-4">
+            <div className="h-full w-[3.3rem] animate-pulse rounded-xl bg-orange-950/20"></div>
+            <div className="space-y-3">
+              <div className="h-5 w-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+              <div className="h-3 w-40 animate-pulse rounded-xl bg-orange-950/20"></div>
+            </div>
+          </div>
+          <div className="h-4 w-8 animate-pulse rounded-xl bg-orange-950/20"></div>
+        </div>
+        <div className="flex h-[4.3rem] items-center justify-between gap-4 rounded-xl bg-orange-950/10 px-3 py-2">
+          <div className="flex h-full items-center gap-4">
+            <div className="h-full w-[3.3rem] animate-pulse rounded-xl bg-orange-950/20"></div>
+            <div className="space-y-3">
+              <div className="h-5 w-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+              <div className="h-3 w-40 animate-pulse rounded-xl bg-orange-950/20"></div>
+            </div>
+          </div>
+          <div className="h-4 w-8 animate-pulse rounded-xl bg-orange-950/20"></div>
+        </div>
+        <div className="flex h-[4.3rem] items-center justify-between gap-4 rounded-xl bg-orange-950/10 px-3 py-2">
+          <div className="flex h-full items-center gap-4">
+            <div className="h-full w-[3.3rem] animate-pulse rounded-xl bg-orange-950/20"></div>
+            <div className="space-y-3">
+              <div className="h-5 w-52 animate-pulse rounded-xl bg-orange-950/20"></div>
+              <div className="h-3 w-40 animate-pulse rounded-xl bg-orange-950/20"></div>
+            </div>
+          </div>
+          <div className="h-4 w-8 animate-pulse rounded-xl bg-orange-950/20"></div>
+        </div>
       </div>
     </div>
   );

@@ -30,19 +30,10 @@ const page = async ({ params }: { params: { id: string } }) => {
     `artists/${AlbumInfo.artists[0].id}`,
     session!.accessToken,
   );
-  const isFollowed = await fetchApi(
-    `me/albums/contains`,
-    session!.accessToken,
-    { ids: AlbumInfo.id },
-  );
 
   return (
     <div>
-      <AlbumPlaylistBanner
-        user={artist}
-        data={AlbumInfo}
-        isFollowed={isFollowed[0]}
-      />
+      <AlbumPlaylistBanner user={artist} data={AlbumInfo} />
       <AlbumPlaylistSongs data={AlbumInfo} />
     </div>
   );

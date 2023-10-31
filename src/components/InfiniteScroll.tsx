@@ -32,7 +32,7 @@ const InfiniteScroll = ({ data, url, session }: any) => {
 
   useEffect(() => {
     if (inView && session) {
-      loadMoreData();
+      (async () => loadMoreData())();
     }
   }, [inView, session]);
 
