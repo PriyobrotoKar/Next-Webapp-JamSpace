@@ -9,6 +9,7 @@ import { FaPlay } from "react-icons/fa6";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiHeart } from "react-icons/fi";
 import PlayAllSongsBtn from "./PlayAllSongsBtn";
+import Link from "next/link";
 
 const HomeBanner = async () => {
   const session = await getServerSession(authOptions);
@@ -28,13 +29,15 @@ const HomeBanner = async () => {
   );
 
   return (
-    <div className="ml-auto flex w-[95%] justify-between gap-4 rounded-bl-3xl rounded-tl-3xl bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-4  md:w-full md:gap-10 md:p-6  2xl:p-8">
-      <div className="flex flex-1 flex-col justify-between gap-2 md:flex-[2_2_0%] xl:gap-6">
+    <div className="ml-auto flex w-[95%] items-center justify-between gap-4 rounded-bl-3xl rounded-tl-3xl bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-4  md:w-full md:gap-10 md:p-6  2xl:p-8">
+      <div className="flex flex-1 flex-col  justify-between gap-2 md:flex-[2_2_0%] xl:gap-6">
         <div className="space-y-3 xl:space-y-4">
           <div className="text-sm text-neutral-300 md:text-base">PLAYLIST</div>
-          <h2 className="text-xl font-medium md:text-4xl xl:text-5xl 2xl:text-6xl">
-            {featPlaylist?.name}
-          </h2>
+          <Link href={`/playlist/${featPlaylist.id}`}>
+            <h2 className="text-xl font-medium md:text-4xl xl:text-5xl 2xl:text-6xl">
+              {featPlaylist?.name}
+            </h2>
+          </Link>
           <p className="line-clamp-2 text-sm text-neutral-500 md:line-clamp-none md:text-base 2xl:text-xl ">
             {featPlaylist?.description}
           </p>
@@ -64,9 +67,9 @@ const HomeBanner = async () => {
           </Button>
         </div>
       </div>
-      <div className="max-w-[19rem] flex-1 md:flex-[1.5_1.5_0%] ">
+      <div className="max-w-[19rem] flex-1  md:flex-[1.5_1.5_0%] ">
         <Image
-          className="h-full rounded-2xl  md:w-full"
+          className="rounded-2xl md:h-full  md:w-full"
           alt=""
           src={featPlaylist?.images[0].url || "/no-image.png"}
           priority
