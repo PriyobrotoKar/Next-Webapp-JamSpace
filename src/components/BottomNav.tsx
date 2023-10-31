@@ -8,10 +8,10 @@ import Link from "next/link";
 const BottomNav = () => {
   return (
     <div className="fixed bottom-0 z-10 flex w-full justify-between bg-gradient-to-b from-transparent to-black to-80% px-6 py-2 md:hidden">
-      <button className="flex flex-col items-center">
+      <Link className="flex flex-col items-center" href={"/"}>
         <GoHomeFill className={"text-2xl"} />
         <div className="text-sm">Home</div>
-      </button>
+      </Link>
 
       <Link className="flex flex-col items-center" href={`/search`}>
         <FiSearch className={"text-2xl"} />
