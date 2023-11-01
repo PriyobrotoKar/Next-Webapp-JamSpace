@@ -6,6 +6,7 @@ import { RootState } from "@/store/store";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 import { AiFillInfoCircle } from "react-icons/ai";
@@ -21,6 +22,7 @@ export const SongVeryLarge = ({ item }: any) => {
   const isPlaying = useSelector(
     (state: RootState) => state.currPlayingSong.isPlaying,
   );
+  const router = useRouter();
 
   const track = item.items[0].track;
   return (
@@ -62,10 +64,17 @@ export const SongVeryLarge = ({ item }: any) => {
         <p className="line-clamp-1 text-sm text-neutral-400">
           {item?.items[0].track.artists.map((artist: any, i: number) => {
             return (
-              <span key={artist.id} className="">
+              <button
+                key={artist.id}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push(`/artist/${artist.id}`);
+                }}
+                className="hover:text-white hover:underline"
+              >
                 {artist.name +
                   (i !== item?.items[0].track.artists.length - 1 ? ", " : "")}
-              </span>
+              </button>
             );
           })}
         </p>
@@ -93,6 +102,7 @@ export const SongLarge = ({
     (state: RootState) => state.currPlayingSong.isPlaying,
   );
   const dispatch = useDispatch();
+  const router = useRouter();
 
   if (type === "playlist") {
     const {
@@ -155,20 +165,28 @@ export const SongLarge = ({
               />
             </div>
             <div className="flex-1 space-y-1">
-              <Link
-                href={`/track/${id}`}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push(`/track/${id}`);
+                }}
                 className="line-clamp-1 hover:underline"
               >
                 {name}
-              </Link>
+              </button>
               <div className="line-clamp-1 text-xs text-neutral-400">
                 {artists.map((artist: any, i: number) => {
                   return (
-                    <Link key={artist.id} href={`/artist/${artist.id}`}>
-                      <span className="hover:text-white hover:underline">
-                        {artist.name + (i !== artists.length - 1 ? ", " : "")}
-                      </span>
-                    </Link>
+                    <button
+                      key={artist.id}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(`/artist/${artist.id}`);
+                      }}
+                      className="hover:text-white hover:underline"
+                    >
+                      {artist.name + (i !== artists.length - 1 ? ", " : "")}
+                    </button>
                   );
                 })}
               </div>
@@ -176,12 +194,17 @@ export const SongLarge = ({
           </div>
         </div>
         <div className="flex justify-end text-center text-sm text-neutral-400 md:flex-1 md:justify-between">
-          <Link
-            href={`/album/${album.id}`}
-            className="line-clamp-1 hidden flex-1 text-left hover:underline group-hover:text-white md:block"
-          >
-            {album.name}
-          </Link>
+          <div className=" flex-1 ">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                router.push(`/album/${album.id}`);
+              }}
+              className="w-fittext-left line-clamp-1 hidden hover:underline group-hover:text-white md:block"
+            >
+              {album.name}
+            </button>
+          </div>
           <div className="hidden flex-1 md:block">{dateAdded(added_at)}</div>
           <div className="w-7">{duration(duration_ms)}</div>
         </div>
@@ -229,20 +252,28 @@ export const SongLarge = ({
           </div>
           <div className="flex  gap-2">
             <div className="flex-1 space-y-1">
-              <Link
-                href={`/track/${id}`}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push(`/track/${id}`);
+                }}
                 className="line-clamp-1 hover:underline"
               >
                 {name}
-              </Link>
+              </button>
               <div className="line-clamp-1 text-xs text-neutral-400">
                 {artists.map((artist: any, i: number) => {
                   return (
-                    <Link key={artist.id} href={`/artist/${artist.id}`}>
-                      <span className="hover:underline group-hover:text-white">
-                        {artist.name + (i !== artists.length - 1 ? ", " : "")}
-                      </span>
-                    </Link>
+                    <button
+                      key={artist.id}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(`/artist/${artist.id}`);
+                      }}
+                      className="hover:text-white hover:underline"
+                    >
+                      {artist.name + (i !== artists.length - 1 ? ", " : "")}
+                    </button>
                   );
                 })}
               </div>
@@ -271,6 +302,7 @@ export const SongMedium = ({ item }: { item: any }) => {
     (state: RootState) => state.currPlayingSong.isPlaying,
   );
   const dispatch = useDispatch();
+  const router = useRouter();
 
   return (
     <div
@@ -328,9 +360,16 @@ export const SongMedium = ({ item }: { item: any }) => {
             <p className="line-clamp-1 text-xs text-neutral-400">
               {artists.map((artist: any, i: number) => {
                 return (
-                  <span key={artist.id} className="">
+                  <button
+                    key={artist.id}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/artist/${artist.id}`);
+                    }}
+                    className="hover:text-white hover:underline"
+                  >
                     {artist.name + (i !== artists.length - 1 ? ", " : "")}
-                  </span>
+                  </button>
                 );
               })}
             </p>

@@ -10,7 +10,7 @@ import ProfileBtn from "./ProfileBtn";
 export const NavLinks = () => {
   const pathname = usePathname();
   return (
-    <nav className="hidden gap-6 md:flex">
+    <nav className="hidden gap-4 md:flex lg:gap-6">
       <Link
         className={
           pathname == "/"
@@ -81,7 +81,7 @@ const Navbar = () => {
             className="border-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
           />
         </div>
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <ProfileBtn />
         </div>
       </div>
