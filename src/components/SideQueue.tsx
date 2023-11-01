@@ -90,9 +90,9 @@ const SideQueue = () => {
                 height={52}
               />
             </div>
-            <div>
+            <div className="text-left">
               <div className="line-clamp-1 font-medium ">{queue[0]?.name}</div>
-              <div className=" line-clamp-1 text-left">
+              <div className=" line-clamp-1">
                 {queue[0]?.artists.map((artist: any, i: number) => {
                   return (
                     <span key={artist.id} className="text-sm text-neutral-400">

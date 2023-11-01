@@ -170,9 +170,10 @@ export const SongLarge = ({
                   e.stopPropagation();
                   router.push(`/track/${id}`);
                 }}
-                className="line-clamp-1 hover:underline"
               >
-                {name}
+                <span className="line-clamp-1 text-left hover:underline">
+                  {name}
+                </span>
               </button>
               <div className="line-clamp-1 text-xs text-neutral-400">
                 {artists.map((artist: any, i: number) => {
@@ -257,9 +258,10 @@ export const SongLarge = ({
                   e.stopPropagation();
                   router.push(`/track/${id}`);
                 }}
-                className="line-clamp-1 hover:underline"
               >
-                {name}
+                <span className="line-clamp-1 text-left hover:underline">
+                  {name}
+                </span>
               </button>
               <div className="line-clamp-1 text-xs text-neutral-400">
                 {artists.map((artist: any, i: number) => {
