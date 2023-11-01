@@ -18,7 +18,7 @@ const AlbumCard = ({ items }: { items: any[] }) => {
               <div className=" flex-initial">
                 <Image
                   className="w-16 rounded-xl transition-shadow group-hover:shadow-2xl md:w-full"
-                  src={item.images[0].url}
+                  src={item.images[0].url || "/no-image.png"}
                   alt=""
                   width={200}
                   height={200}

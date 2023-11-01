@@ -7,6 +7,7 @@ const nextConfig = {
       "t.scdn.co",
       "image-cdn-ak.spotifycdn.com",
       "charts-images.scdn.co",
+      "thisis-images.spotifycdn.com",
     ],
   },
 };
