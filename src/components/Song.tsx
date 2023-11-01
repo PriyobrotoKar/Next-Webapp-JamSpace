@@ -201,9 +201,9 @@ export const SongLarge = ({
                 e.stopPropagation();
                 router.push(`/album/${album.id}`);
               }}
-              className="w-fittext-left line-clamp-1 hidden hover:underline group-hover:text-white md:block"
+              className=" hidden w-fit text-left hover:underline group-hover:text-white md:block"
             >
-              {album.name}
+              <span className="line-clamp-1">{album.name}</span>
             </button>
           </div>
           <div className="hidden flex-1 md:block">{dateAdded(added_at)}</div>
