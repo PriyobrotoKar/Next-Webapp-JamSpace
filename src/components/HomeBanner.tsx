@@ -29,8 +29,8 @@ const HomeBanner = async () => {
   );
 
   return (
-    <div className="ml-auto flex w-[95%] items-center justify-between gap-4 rounded-bl-3xl rounded-tl-3xl bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-4  md:w-full md:gap-10 md:p-6  2xl:p-8">
-      <div className="flex flex-1 flex-col  justify-between gap-2 md:flex-[2_2_0%] xl:gap-6">
+    <div className="ml-auto flex w-[95%] items-center justify-between gap-4 rounded-bl-3xl rounded-tl-3xl bg-gradient-to-bl from-orange-950/40 to-neutral-900/60 p-4 md:w-full  md:gap-10 md:rounded-3xl md:p-6  2xl:p-8">
+      <div className="flex flex-1 flex-col justify-between  gap-2 self-stretch md:flex-[2_2_0%] xl:gap-6">
         <div className="space-y-3 xl:space-y-4">
           <div className="text-sm text-neutral-300 md:text-base">PLAYLIST</div>
           <Link href={`/playlist/${featPlaylist.id}`}>
@@ -71,14 +71,14 @@ const HomeBanner = async () => {
           </Button>
         </div>
       </div>
-      <div className="max-w-[19rem] flex-1  md:flex-[1.5_1.5_0%] ">
+      <div className="max-w-[19rem] flex-1   md:flex-[1.5_1.5_0%] ">
         <Image
-          className="rounded-2xl md:h-full  md:w-full"
+          className="ml-auto  rounded-2xl md:max-w-[20rem]"
           alt=""
           src={featPlaylist?.images[0].url || "/no-image.png"}
           priority
-          width={300}
-          height={300}
+          width={280}
+          height={280}
         />
       </div>
     </div>

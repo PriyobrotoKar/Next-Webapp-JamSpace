@@ -36,6 +36,7 @@ const Player = () => {
     (state: RootState) => state.currPlayingSong.isPlaying,
   );
   const dispatch = useDispatch();
+  const { data: playerState } = useFetch("me/player", session?.accessToken);
   const [totalDuration, setTotalDuration] = useState(0);
 
   const [songProgressDuration, setSongProgressDuration] = useState(0);
@@ -175,6 +176,16 @@ const Player = () => {
       if (session) {
         await postDataFromApi("me/player/next", {}, session?.accessToken);
         dispatch(updateCurrSong({ track: queue[0] }));
+        if (song.id !== queue[0].id) {
+          dispatch(updatePlayingState(true));
+        } else {
+          if (
+            playerState.repeat_state === "context" ||
+            playerState.repeat_state === "track"
+          )
+            dispatch(updatePlayingState(true));
+        }
+
         dispatch(updateUserQueue(queue.slice(1)));
       }
     } catch (error: any) {
@@ -207,7 +218,9 @@ const Player = () => {
       if (session) {
         await postDataFromApi("me/player/previous", {}, session?.accessToken);
         dispatch(updateUserQueue([song, ...queue]));
+        dispatch(updatePlayingState(true));
         fetchPreviousSong();
+        setSongProgressDuration(0);
       }
     } catch (error: any) {
       toast.error("Something went wrong!");
