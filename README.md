@@ -7,7 +7,7 @@
 <br/>
 
 
-<p align="center"><b>JamSpace is a modern and intuitive platform that allows users to stream music, create playlists, and discover new tracks. Leveraging the Spotify API and a range of cutting-edge technologies, this app provides a seamless and enjoyable music listening experience.</b></p>
+<p align="center"><b>JamSpace is a modern and intuitive platform that allows users to stream music and discover new tracks. Leveraging the Spotify API and a range of cutting-edge technologies, this app provides a seamless and enjoyable music listening experience.</b></p>
 
 ## Features
 - **Music Streaming**: Users can access their favorite tracks and stream music directly from the Spotify library.
